@@ -1,0 +1,24 @@
+@startuml
+
+left to right direction
+
+actor :Quản trị viên: as Admin
+
+usecase CreatedStories as "Tạo truyện"
+usecase SearchStories as "Tìm kiếm truyện"
+usecase EditStories as "Sửa truyện"
+usecase InfoStories as "Xem thông tin truyện"
+usecase CensorStories as "Kiểm duyệt truyện"
+usecase ManageStories as "Quản lý truyện"
+
+Admin --|> ManageStories 
+ManageStories <.. SearchStories : <<extend>>
+ManageStories <.. InfoStories : <<extend>>
+CreatedStories <.. InfoStories : <<include>>
+CreatedStories <.. CensorStories : <<include>>
+CreatedStories <.. EditStories : <<include>>
+CreatedStories ..> ManageStories : <<extend>>
+EditStories ..> ManageStories : <<extend>>
+CensorStories ..> ManageStories : <<extend>>
+
+@enduml

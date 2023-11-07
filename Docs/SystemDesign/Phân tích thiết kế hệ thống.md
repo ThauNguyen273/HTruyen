@@ -4,7 +4,7 @@
 
 ### Biểu đồ Use Case tổng quát
 
-    ![Biểu đồ Use Case tổng quát](Usecase/General/General.png)
+![Biểu đồ Use Case tổng quát](Usecase/General/General.png)
 
 ### Biểu đồ Use Case phân rã
 
