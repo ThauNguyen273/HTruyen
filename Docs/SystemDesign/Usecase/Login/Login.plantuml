@@ -1,0 +1,17 @@
+@startuml
+
+left to right direction
+
+actor :Khách : as Guest
+
+usecase LoginUsePass as "Đăng nhập bằng usename/password"
+usecase LoginWithFa as "Đăng nhập bằng tài khoản Facebook"
+usecase LoginWithGG as "Đăng nhập bằng tài khoản Google"
+usecase Login as "Đăng nhập"
+
+Guest --|> Login
+Login ...> LoginUsePass : <<extend>>
+Login ...> LoginWithFa : <<extend>>
+Login ...> LoginWithGG : <<extend>>
+
+@enduml

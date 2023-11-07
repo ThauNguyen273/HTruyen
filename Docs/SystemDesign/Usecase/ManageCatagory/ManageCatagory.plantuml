@@ -1,0 +1,16 @@
+@startuml
+
+left to right direction
+
+actor :Quản trị viên: as Admin
+
+usecase CreatedStories as "Tạo thể loại truyện"
+usecase EditStories as "Sửa thể loại truyện"
+usecase ManageCatagory as "Quản lý thể loại truyện"
+
+Admin --|> ManageCatagory 
+ManageCatagory <.. CreatedStories : <<extend>>
+EditStories ..> CreatedStories : <<include>>
+ManageCatagory <.. EditStories : <<extend>>
+
+@enduml

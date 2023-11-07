@@ -1,0 +1,23 @@
+@startuml
+
+left to right direction
+
+actor :Quản trị viên: as Admin
+
+usecase CreatedAccount as "Thêm tài khoản"
+usecase EditAccount as "Sửa tài khoản"
+usecase EditPermissionAccount as "Sửa quyền hạn"
+usecase EditInfo as "Sửa thông tin tài khoản"
+usecase ResetPasswordAccount as "Khôi phục mật khẩu"
+usecase DeleteAccount as "Xóa tài khoản"
+usecase ManageAccount as "Quản lý tài khoản"
+
+Admin --|> ManageAccount
+ManageAccount <... CreatedAccount : <<extend>>
+ManageAccount <... EditAccount : <<extend>>
+ManageAccount <... EditPermissionAccount : <<extend>>
+ManageAccount <... EditInfo : <<extend>>
+ManageAccount <... ResetPasswordAccount : <<extend>>
+ManageAccount <... DeleteAccount : <<extend>>
+
+@enduml
