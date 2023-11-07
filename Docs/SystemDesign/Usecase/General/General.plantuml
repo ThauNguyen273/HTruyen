@@ -1,0 +1,65 @@
+@startuml
+left to right direction
+
+actor :Người dùng: as User
+actor :Tác giả: as Author
+actor :Quản trị viên: as Admin
+
+usecase SearchStories as "Tìm kiếm truyện"
+usecase InfoStories as "Thông tin truyện"
+usecase ReadStories as "Đọc truyện"
+usecase FollowStories as "Theo dõi truyện"
+usecase ReviewStories as "Đánh giá truyện"
+usecase CreatedStories as "Tạo truyện"
+usecase ManageCreatedStories as "Quản lý truyện đã tạo"
+usecase ManageInfoPersonal as "Quản lý thông tin cá nhân"
+usecase Payment as "Thanh toán"
+usecase Forum as "Diễn đàn"
+usecase Comment as "Bình luận"
+
+usecase ManageAccount as "Quản lý tài khoản"
+usecase ManageStories as "Quản lý truyện"
+usecase ManageForum as "Quản lý diễn đàn"
+usecase ManagePayment as "Quản lý tiền tệ"
+usecase ManageService as "Quản lý dịch vụ"
+
+usecase LoginLogout as "Đăng nhập/xuất"
+
+Admin --|> User
+Admin --|> Author
+
+User -- LoginLogout
+Author -- LoginLogout 
+LoginLogout -- Admin
+
+User -- SearchStories 
+User -- InfoStories
+User -- ReadStories 
+User -- FollowStories 
+User -- ReviewStories 
+User -- CreatedStories 
+User -- ManageCreatedStories 
+User -- ManageInfoPersonal 
+User -- Payment 
+User -- Forum 
+User -- Comment
+
+SearchStories -- Author
+InfoStories -- Author
+ReadStories -- Author
+FollowStories -- Author
+ReviewStories -- Author
+CreatedStories -- Author
+ManageCreatedStories -- Author
+ManageInfoPersonal -- Author
+Payment -- Author
+Forum -- Author
+Comment-- Author
+
+Admin -- ManageAccount
+Admin -- ManageStories 
+Admin -- ManageForum 
+Admin -- ManagePayment 
+Admin -- ManageService
+
+@enduml
