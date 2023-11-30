@@ -4,8 +4,14 @@ using Core.Entities.Interfaces;
 
 namespace Core.Entities
 {
-    public class Chapter : IEntity
+    public class Nomination : IEntity
     {
+        public enum Evaluate { TooBad, Bad, Normal, Good, Excellent }
+        public class UserInfo
+        {
+            public required string UserId { get; set; }
+            public required string UserFullName { get; set; }
+        }
         public class NovelInfo
         {
             public required string NovelId { get; set; }
@@ -15,12 +21,10 @@ namespace Core.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public required NovelInfo Novel { get; set; }
-        public required string Name { get; set; }
+        public Evaluate? Rating { get; set; }
         public required string Content { get; set; }
-        public bool IsVip { get; set; } = false;
-        public double ChapterPrice { get; set; } = 0;
+        public required UserInfo User { get; set; }
+        public required NovelInfo Novel { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime DateUpdated { get; set; }
     }
 }

@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using Core.Entities.Interfaces;
 
 namespace Core.Entities
 {
-    public class Comment
+    public class Comment : IEntity
     {
-        public int Id { get; set; }
-        public required string Content { get; set; }
-        public DateTime Created { get; set; }
+        public class UserInfo
+        {
+            public required string UserId { get; set; }
+            public required string UserFullName { get; set; }
+        }
+        public class NovelInfo
+        {
+            public required string NovelId { get; set; }
+            public required string NovelName { get; set; }
+        }
 
-        #region Relationship
-        public int UserId { get; set; }
-        public required User User { get; set; }
-        public int NovelId { get; set; }
-        public required Novel Novel { get; set; }
-        #endregion
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        public required UserInfo User { get; set; }
+        public required NovelInfo Novel { get; set; }
+        public required string Content { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.12" />
+    <PackageReference Include="MongoDB.Bson" Version="2.22.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
+    <PackageReference Include="Riok.Mapperly" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\Chapters\" />
+    <Folder Include="DTOs\Comments\" />
+    <Folder Include="DTOs\Authors\" />
+    <Folder Include="DTOs\Novels\" />
+    <Folder Include="DTOs\Users\" />
   </ItemGroup>
 
 </Project>

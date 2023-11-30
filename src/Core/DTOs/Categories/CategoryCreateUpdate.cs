@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities
+namespace Core.DTOs.Categories
 {
-    public class Currency
+    public record struct  CategoryCreateUpdate
     {
-        public int Id { get; set; }
         public required string Name { get; set; }
-        public double ExchangeRate { get; set; }
     }
 }
