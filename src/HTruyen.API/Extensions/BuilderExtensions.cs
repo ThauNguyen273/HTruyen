@@ -24,13 +24,17 @@ namespace HTruyen.API.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IRankRepository, RankRepository>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
 
             return services;
         }
 
         public static IServiceCollection AddEntityServices(this IServiceCollection services)
         {
-            services.AddScoped<CategoryServices>();
+            services.AddScoped<CategoryService>();
+            services.AddScoped<RankService>();
+            services.AddScoped<WalletService>();
 
             return services;
         }

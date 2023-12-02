@@ -5,11 +5,11 @@ using Core.Mappers;
 using Core.Repositories.Parameters;
 
 namespace Core.Services;
-public class CategoryServices
+public class CategoryService
 {
     private readonly ICategoryRepository _categoryRepository;
 
-    public CategoryServices(ICategoryRepository categoryRepository)
+    public CategoryService(ICategoryRepository categoryRepository)
     {
         _categoryRepository = categoryRepository;
     }

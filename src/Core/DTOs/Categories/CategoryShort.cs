@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.DTOs.Categories
+﻿namespace Core.DTOs.Categories;
+public record struct CategoryShort
 {
-    public record struct CategoryShort
-    {
-        public required string Id { get; set; }
-        public required string Name { get; set; }
-    }
+     public required string Id { get; set; }
+     public required string Name { get; set; }
 }
+

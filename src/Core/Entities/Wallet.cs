@@ -10,5 +10,6 @@ namespace Core.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         public double Balance { get; set; }
+        public DateTime DateCreated { get; set; }
     }
 }

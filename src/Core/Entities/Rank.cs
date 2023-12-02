@@ -11,7 +11,7 @@ namespace Core.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         public required string Name { get; set; }
-        public required string Benefit { get; set; }
+        public string? Benefit { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
     }
