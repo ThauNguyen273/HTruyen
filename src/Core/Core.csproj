@@ -17,7 +17,6 @@
     <Folder Include="DTOs\Comments\" />
     <Folder Include="DTOs\Authors\" />
     <Folder Include="DTOs\Novels\" />
-    <Folder Include="DTOs\Users\" />
   </ItemGroup>
 
 </Project>

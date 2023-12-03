@@ -28,11 +28,11 @@ public class WalletRepository : Repository<Wallet>, IWalletRepository
             query = query.OrderBy(p => p.DateCreated);
         }
 
-        var categories = await query
+        var wallets = await query
             .Skip((pagination.PageNumber - 1) * pagination.PageSize)
             .Take(pagination.PageSize)
             .ToListAsync();
 
-        return categories;
+        return wallets;
     }
 }
