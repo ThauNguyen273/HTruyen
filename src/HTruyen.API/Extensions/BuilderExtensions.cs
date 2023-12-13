@@ -26,6 +26,8 @@ namespace HTruyen.API.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IRankRepository, RankRepository>();
             services.AddScoped<IWalletRepository, WalletRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
 
             return services;
         }
@@ -35,6 +37,8 @@ namespace HTruyen.API.Extensions
             services.AddScoped<CategoryService>();
             services.AddScoped<RankService>();
             services.AddScoped<WalletService>();
+            services.AddScoped<UserService>();
+            services.AddScoped<AuthorService>();
 
             return services;
         }

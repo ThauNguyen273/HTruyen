@@ -1,4 +1,5 @@
-﻿using Core.Entities.Interfaces;
+﻿using Core.Entities;
+using Core.Entities.Interfaces;
 using Core.Interfaces.Repositories.Bases;
 using MongoDB.Driver;
 using System.Linq.Expressions;
@@ -21,6 +22,15 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
         return entity;
     }
+
+    public virtual async Task<List<TEntity>> GetAllAsync()
+    {
+        var entities = await Database.Collection<TEntity>()
+        .Find(_ => true)
+        .ToListAsync();
+
+        return entities;
+    }
     public virtual async Task CreateAsync(TEntity entity)
     {
         await Database.Collection<TEntity>()
@@ -35,6 +45,11 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         {
             throw new Exception("ReplaceOne.ModifiedCount is 0.");
         }
+    }
+    public virtual async Task UpdateAsync(TEntity entity)
+    {
+        var filter = Builders<TEntity>.Filter.Eq(u => u.Id, entity.Id);
+        await Database.Collection<TEntity>().ReplaceOneAsync(filter, entity);
     }
     public virtual async Task DeleteAsync(string id)
     {

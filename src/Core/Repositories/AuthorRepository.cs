@@ -6,22 +6,22 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
 namespace Core.Repositories;
-public class UserRepository : Repository<User>, IUserRepository
+public  class AuthorRepository : Repository<Author>, IAuthorRepository
 {
-    public UserRepository(Database database) : base(database)
+    public AuthorRepository(Database database) : base(database)
     {
     }
 
-    public async Task<List<User>> SearchAsync(
-        string emailOrUsername,
+    public async Task<List<Author>> SearchAsync(
+        string emailOrAuthorname,
         PaginationParameters pagination,
         bool isDescending)
     {
-        var query = Database.Collection<User>().AsQueryable();
+        var query = Database.Collection<Author>().AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(emailOrUsername))
+        if (!string.IsNullOrWhiteSpace(emailOrAuthorname))
         {
-            query = query.Where(x => x.Name.Contains(emailOrUsername) || x.Email.Contains(emailOrUsername));
+            query = query.Where(x => x.Name.Contains(emailOrAuthorname) || x.Email.Contains(emailOrAuthorname));
         }
 
         if (isDescending)
@@ -33,12 +33,11 @@ public class UserRepository : Repository<User>, IUserRepository
             query = query.OrderBy(p => p.Name);
         }
 
-        var users = await query
+        var authors = await query
             .Skip((pagination.PageNumber - 1) * pagination.PageSize)
             .Take(pagination.PageSize)
             .ToListAsync();
 
-        return users;
+        return authors;
     }
 }
-

@@ -30,6 +30,37 @@ public class UserService
     {
         return await _userRepository.GetAsync(id);
     }
+
+    public async Task<string> CreateAsync(UserCreateUpdate create)
+    {
+        var entity = UserMapper.ToEntity(create);
+        entity.DateCreated = DateTime.Now;
+        entity.DateUpdated = DateTime.Now;
+        await _userRepository.CreateAsync(entity);
+
+        return entity.Id!;
+    }
+
+    public async Task ReplaceAsync(string id, UserCreateUpdate update)
+    {
+        var entity = await _userRepository.GetAsync(id) ?? throw new KeyNotFoundException();
+        UserMapper.ToEntity(update, entity);
+        entity.DateUpdated = DateTime.Now;
+        await _userRepository.UpdateAsync(entity);
+    }
+
+    public async Task DeleteAsync(string id)
+    {
+        try
+        {
+            await _userRepository.DeleteAsync(id);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            throw ex;
+        }
+    }
+
 }
     
 
