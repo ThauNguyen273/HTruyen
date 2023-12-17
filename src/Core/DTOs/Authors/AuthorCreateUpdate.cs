@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace Core.DTOs.Authors;
-public class AuthorCreateUpdate
+public record struct AuthorCreateUpdate
 {
     [Required(ErrorMessage = "Email is required.")]
     public string Email { get; set; }

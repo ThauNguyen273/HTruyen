@@ -28,6 +28,8 @@ namespace HTruyen.API.Extensions
             services.AddScoped<IWalletRepository, WalletRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<INovelRepository, NovelRepository>();
+            services.AddScoped<IChapterRepository, ChapterRepository>();
 
             return services;
         }
@@ -39,6 +41,8 @@ namespace HTruyen.API.Extensions
             services.AddScoped<WalletService>();
             services.AddScoped<UserService>();
             services.AddScoped<AuthorService>();
+            services.AddScoped<NovelService>();
+            services.AddScoped<ChapterService>();
 
             return services;
         }

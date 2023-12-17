@@ -46,6 +46,11 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
             throw new Exception("ReplaceOne.ModifiedCount is 0.");
         }
     }
+    public virtual async Task ReplaceAsync(string id, TEntity entity)
+    {
+        var filter = Builders<TEntity>.Filter.Eq("_id", id);
+        await Database.Collection<TEntity>().ReplaceOneAsync(filter, entity);
+    }
     public virtual async Task UpdateAsync(TEntity entity)
     {
         var filter = Builders<TEntity>.Filter.Eq(u => u.Id, entity.Id);

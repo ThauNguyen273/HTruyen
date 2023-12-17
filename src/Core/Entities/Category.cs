@@ -9,6 +9,7 @@ namespace Core.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public required string Name { get; set; }
+        [BsonRequired]
+        public string Name { get; set; } = string.Empty;
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace Core.Common.Enums;
 public enum GenderType
 {
-    Male, Female, LGBT
+    Male = 1, 
+    Female = 2, 
+    LGBT = 3
 }

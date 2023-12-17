@@ -1,5 +1,7 @@
 ﻿namespace Core.Common.Enums;
 public enum RoleType
 {
-    Admin, User, Author
+    Admin = 1,  
+    Author = 2,
+    User = 3
 }

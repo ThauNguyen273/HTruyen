@@ -1,5 +1,7 @@
 ﻿namespace Core.Common.Enums;
 public enum NovelStatusType
 {
-    Continue, Complete, Drop
+    Continue = 1, 
+    Complete = 2, 
+    Drop = 3
 }

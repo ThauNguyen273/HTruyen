@@ -6,14 +6,16 @@ using Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HTruyen.API.Controllers;
-[Route("api/[controller]")]
+[Route("api/")]
 [ApiController]
 public class AuthorController : ControllerBase
 {
     private readonly AuthorService _authorService;
     private readonly RankService _rankService;
 
-    public AuthorController(AuthorService authorService, RankService rankService)
+    public AuthorController(
+        AuthorService authorService, 
+        RankService rankService)
     {
         _authorService = authorService;
         _rankService = rankService;
@@ -21,8 +23,8 @@ public class AuthorController : ControllerBase
 
     #region Author
 
-    [HttpGet]
-    public async Task<IEnumerable<AuthorShort>> Get(
+    [HttpGet("authors")]
+    public async Task<IEnumerable<AuthorShort>> GetAuthorAsync(
         [FromQuery] string? search = null,
         [FromQuery] ushort pageNumber = 1,
         [FromQuery] ushort pageSize = 15,
@@ -31,8 +33,8 @@ public class AuthorController : ControllerBase
         return await _authorService.SearchAsync(search, pageNumber, pageSize, isDescending);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Author?>> Get(string id)
+    [HttpGet("author/{id}")]
+    public async Task<ActionResult<Author?>> GetAuthorById(string id)
     {
         var user = await _authorService.GetAsync(id);
         if (user is null)
@@ -43,16 +45,16 @@ public class AuthorController : ControllerBase
         return Ok(user);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] AuthorCreateUpdate body)
+    [HttpPost("create-author")]
+    public async Task<IActionResult> CreateAuthorAsync([FromBody] AuthorCreateUpdate body)
     {
         var newId = await _authorService.CreateAsync(body);
 
-        return CreatedAtAction(nameof(Get), new {id =  newId}, null);
+        return CreatedAtAction(nameof(GetAuthorById), new {id =  newId}, null);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Put(string id, [FromBody] AuthorCreateUpdate body)
+    [HttpPut("edit-author/{id}")]
+    public async Task<IActionResult> EditAuthorAsync(string id, [FromBody] AuthorCreateUpdate body)
     {
         try
         {
@@ -70,8 +72,8 @@ public class AuthorController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    [HttpDelete("delete-author/{id}")]
+    public async Task<IActionResult> DeleteAuthorAsync(string id)
     {
         try
         {
@@ -90,9 +92,66 @@ public class AuthorController : ControllerBase
     #region Rank
 
     [HttpGet("ranks")]
-    public async Task<IEnumerable<Rank>> GetAllRanks()
+    public async Task<IEnumerable<RankShort>> GetRankAsync(
+        [FromQuery] string? search = null,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15,
+        [FromQuery] bool isDescending = false)
     {
-        return await _authorService.GetAllRanks();
+        return await _rankService.SearchAsync(search, pageNumber, pageSize, isDescending);
+    }
+
+    [HttpGet("rank/{id}")]
+    public async Task<ActionResult<Rank>> GetRankById(string id)
+    {
+        var rank = await _rankService.GetAsync(id);
+        if (rank is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(rank);
+    }
+
+    [HttpPost("create-rank")]
+    public async Task<IActionResult> CreateRankAsync([FromBody] RankCreateUpdate body)
+    {
+        var newId = await _rankService.CreateAsync(body);
+        return CreatedAtAction(nameof(GetRankById), new { id = newId }, null);
+    }
+
+    [HttpPut("edit-rank/{id}")]
+    public async Task<IActionResult> EditRankAsync(string id, [FromBody] RankCreateUpdate body)
+    {
+        try
+        {
+            await _rankService.ReplaceAsync(id, body);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        return NoContent();
+    }
+
+    [HttpDelete("delete-rank/{id}")]
+    public async Task<IActionResult> DeleteRankAsync(string id)
+    {
+        try
+        {
+            await _rankService.DeleteAsync(id);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
     }
 
     #endregion

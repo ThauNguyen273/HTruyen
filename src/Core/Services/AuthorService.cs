@@ -2,7 +2,6 @@
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Mappers;
-using Core.Repositories;
 using Core.Repositories.Parameters;
 
 namespace Core.Services;
@@ -43,7 +42,7 @@ public class AuthorService
         }
         var author = AuthorMapper.ToEntity(create);
         author.Rank = rank;
-
+        author.DateCreated = DateTime.Now;
         await _authorRepository.CreateAsync(author);
 
         return author.Id!;
