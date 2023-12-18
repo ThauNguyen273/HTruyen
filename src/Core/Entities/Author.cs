@@ -3,6 +3,7 @@ using Core.Entities.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities;
 public class Author : IEntity
@@ -12,13 +13,12 @@ public class Author : IEntity
     public string? Id { get; set; }
 
     [BsonRequired]
+    [EmailAddress]
     public string Email { get; set; } = string.Empty;
 
     [BsonRequired]
     public string Name { get; set; } = string.Empty;
-
     public string? AnotherName { get; set; }
-
     public string? Description { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
@@ -26,9 +26,7 @@ public class Author : IEntity
 
     [BsonIgnoreIfNull]
     public Rank? Rank { get; set; }
-
     public ushort NovelCreateCount { get; set; }
-
     public uint ChapterCreateCount { get; set; }
 
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]

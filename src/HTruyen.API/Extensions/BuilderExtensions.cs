@@ -30,6 +30,12 @@ namespace HTruyen.API.Extensions
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<INovelRepository, NovelRepository>();
             services.AddScoped<IChapterRepository, ChapterRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<INominationRepository, NominationRepository>();
+            services.AddScoped<IUserFavoriteRepository, UserFavoriteRepository>();
+            services.AddScoped<IUserFeedbackRepository, UserFeedbackRepository>();
+            services.AddScoped<IUserFollowRepository, UserFollowRepository>();
+            services.AddScoped<IUserViewRepository, UserViewRepository>();
 
             return services;
         }
@@ -43,6 +49,12 @@ namespace HTruyen.API.Extensions
             services.AddScoped<AuthorService>();
             services.AddScoped<NovelService>();
             services.AddScoped<ChapterService>();
+            services.AddScoped<CommentService>();
+            services.AddScoped<NominationService>();
+            services.AddScoped<UserFavoriteService>();
+            services.AddScoped<UserFollowService>();
+            services.AddScoped<UserViewService>();
+            services.AddScoped<UserFeedbackService>();
 
             return services;
         }

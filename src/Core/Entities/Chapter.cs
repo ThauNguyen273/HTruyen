@@ -17,7 +17,7 @@ namespace Core.Entities
         [BsonRequired]
         public string Content { get; set; } = string.Empty;
 
-        public bool IsVip { get; set; } = false;
+        public bool IsVip { get; set; }
 
         public double ChapterPrice { get; set; } = 0;
 

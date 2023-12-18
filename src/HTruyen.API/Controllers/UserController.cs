@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HTruyen.API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/")]
 [ApiController]
 public class UserController : ControllerBase
 {
@@ -16,8 +16,8 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    [HttpGet]
-    public async Task<IEnumerable<UserShort>> Get(
+    [HttpGet("users")]
+    public async Task<IEnumerable<UserShort>> GetUsersAsync(
         [FromQuery] string? search = null,
         [FromQuery] ushort pageNumber = 1,
         [FromQuery] ushort pageSize = 15,
@@ -26,8 +26,8 @@ public class UserController : ControllerBase
         return await _userService.SearchAsync(search, pageNumber, pageSize, isDescending);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<User?>> Get(string id)
+    [HttpGet("user/{id}")]
+    public async Task<ActionResult<User?>> GetUserById(string id)
     {
         var user = await _userService.GetAsync(id);
         if (user is null)
@@ -38,16 +38,16 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] UserCreateUpdate body)
+    [HttpPost("created-User")]
+    public async Task<IActionResult> CreateUserAsync([FromBody] UserCreateUpdate body)
     {
         var newId = await _userService.CreateAsync(body);
-        return CreatedAtAction(nameof(Get), new { id = newId }, null);
+        return CreatedAtAction(nameof(GetUserById), new { id = newId }, null);
 
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Put(string id, [FromBody] UserCreateUpdate body)
+    [HttpPut("edit-user/{id}")]
+    public async Task<IActionResult> EditUserAsync(string id, [FromBody] UserCreateUpdate body)
     {
         try
         {
@@ -65,7 +65,7 @@ public class UserController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete]
+    [HttpDelete("delete-user/id")]
     public async Task<IActionResult> Delete(string id)
     {
         try

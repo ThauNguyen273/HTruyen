@@ -12,11 +12,16 @@ public class NovelService
 {
     private readonly INovelRepository _novelRepository;
     private readonly IAuthorRepository _authorRepository;
+    private readonly ICategoryRepository _categoryRepository;
 
-    public NovelService(INovelRepository novelRepository, IAuthorRepository authorRepository)
+    public NovelService(
+        INovelRepository novelRepository, 
+        IAuthorRepository authorRepository, 
+        ICategoryRepository categoryRepository)
     {
         _novelRepository = novelRepository;
         _authorRepository = authorRepository;
+        _categoryRepository = categoryRepository;
     }
 
     public async Task<IEnumerable<NovelShort>> SearchAsync(
@@ -39,7 +44,13 @@ public class NovelService
     public async Task<string> CreateAsync(NovelCreate create)
     {
         var author = await _authorRepository.GetAsync(create.AuthorId);
-        if(author is null)
+        if (author is null)
+        {
+            throw new KeyNotFoundException();
+        }
+
+        var category = await _categoryRepository.GetAsync(create.CategoryId);
+        if (category is null)
         {
             throw new KeyNotFoundException();
         }
@@ -50,9 +61,16 @@ public class NovelService
             AuthorName = author.Name
         };
 
+        var categoryInfo = new CategoryInfo
+        {
+            CategoryId = category.Id!,
+            CategoryName = category.Name
+    };
+
         var novel = NovelMapper.ToEntity(create);
         novel.Author = authorInfo;
         novel.Status = Common.Enums.NovelStatusType.Continue;
+        novel.Category = categoryInfo;
         novel.IsVip = false;
         novel.DateCreated = DateTime.Now;
         await _novelRepository.CreateAsync(novel);
@@ -136,7 +154,6 @@ public class NovelService
         novel.FollowCount = update.FollowCount;
         novel.FavoriteCount = update.FavoriteCount;
         novel.CommentCount = update.CommentCount;
-        novel.Categories = update.Categories;
         novel.Chapters = update.Chapters;
         novel.Nominations = update.Nominations;
         novel.Comments = update.Comments;
@@ -163,19 +180,6 @@ public class NovelService
 
     private void UpdateRelatedEntities(Novel novel, NovelUpdate update)
     {
-        if(update.Categories != null)
-        {
-            foreach(var categoryInfo in update.Categories)
-            {
-                var category = novel.Categories?.FirstOrDefault(c => c.CategoryId == categoryInfo.CategoryId);
-                if(category != null)
-                {
-                    category.CategoryId = categoryInfo.CategoryId;
-                    category.CategoryName = categoryInfo.CategoryName;
-                }
-            }
-        }
-
         if(update.Chapters != null)
         {
             foreach(var  chapterInfo in update.Chapters)

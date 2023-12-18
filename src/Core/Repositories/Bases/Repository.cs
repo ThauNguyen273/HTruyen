@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-using Core.Entities.Interfaces;
+﻿using Core.Entities.Interfaces;
 using Core.Interfaces.Repositories.Bases;
 using MongoDB.Driver;
 using System.Linq.Expressions;
@@ -22,7 +21,14 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
         return entity;
     }
+    public virtual async Task<IEnumerable<TEntity>> GetByFieldAsync(Expression<Func<TEntity, bool>> filter)
+    {
+        var entities = await Database.Collection<TEntity>()
+            .Find(filter)
+            .ToListAsync();
 
+        return entities;
+    }
     public virtual async Task<List<TEntity>> GetAllAsync()
     {
         var entities = await Database.Collection<TEntity>()
@@ -65,5 +71,9 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         {
             throw new KeyNotFoundException();
         }
+    }
+    public virtual async Task DeleteByFieldAsync(Expression<Func<TEntity, bool>> filter)
+    {
+        await Database.Collection<TEntity>().DeleteManyAsync(filter);
     }
 }

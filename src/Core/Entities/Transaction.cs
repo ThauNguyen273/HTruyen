@@ -10,9 +10,14 @@ namespace Core.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public required UserInfo UserId { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public required string UserId { get; set; }
+        public UserInfo? User { get; set; }
         public required string TransactionType { get; set; }
         public double Amount { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime DateCreated { get; set; }
     }
 }

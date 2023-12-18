@@ -11,6 +11,8 @@ public class Rank : IEntity
     public string? Id { get; set; }
     public required string Name { get; set; }
     public string? Benefit { get; set; }
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime DateCreated { get; set; }
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime DateUpdated { get; set; }
 }

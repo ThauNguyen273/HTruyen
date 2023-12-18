@@ -1,9 +1,10 @@
 ﻿using Core.DTOs.Categories;
 using Core.DTOs.Chapters;
+using Core.DTOs.Comments;
+using Core.DTOs.Nominations;
 using Core.DTOs.Novels;
 using Core.Entities;
 using Core.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HTruyen.API.Controllers;
@@ -15,15 +16,21 @@ public class NovelController : ControllerBase
     private readonly NovelService _novelService;
     private readonly ChapterService _chapterService;
     private readonly CategoryService _categoryService;
+    private readonly NominationService _nominationService;
+    private readonly CommentService _commentService;
 
     public NovelController(
         NovelService novelService, 
         ChapterService chapterService, 
-        CategoryService categoryService)
+        CategoryService categoryService,
+        NominationService nominationService,
+        CommentService commentService)
     {
         _novelService = novelService;
         _chapterService = chapterService;
         _categoryService = categoryService;
+        _nominationService = nominationService;
+        _commentService = commentService;
     }
 
     #region Novel
@@ -49,6 +56,47 @@ public class NovelController : ControllerBase
 
         return Ok(novel);
     }
+
+    [HttpGet("novel/chapters/{novelId}")]
+    public async Task<ActionResult<IEnumerable<Chapter>>> GetChaptersByNovelId(string novelId)
+    {
+        try
+        {
+            var chapters = await _chapterService.GetChaptersByNovelId(novelId);
+
+            if (chapters is null || !chapters.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(chapters);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("novel/comments/{novelId}")]
+    public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByNovelId(string novelId)
+    {
+        try
+        {
+            var comments = await _commentService.GetCommentsByNovelId(novelId);
+
+            if (comments is null || !comments.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(comments);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
 
     [HttpPost("create-novel")]
     public async Task<IActionResult> CreateNovelAsync([FromBody] NovelCreate body)
@@ -91,6 +139,45 @@ public class NovelController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpDelete("novel/delete-chapters/{novelId}")]
+    public async Task<IActionResult> DeleteChaptersByNovelIdAsync(string novelId)
+    {
+        try
+        {
+            await _chapterService.DeleteChaptersByNovelIdAsync(novelId);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+
+        return NoContent();
+    }
+
+    [HttpDelete("novel/delete-comments/{novelId}")]
+    public async Task<IActionResult> DeleteCommentsByNovelIdAsync(string novelId)
+    {
+        try
+        {
+            await _commentService.DeleteCommentsByNovelIdAsync(novelId);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+
+        return NoContent();
+    }
+
 
     #endregion
 
@@ -218,6 +305,103 @@ public class NovelController : ControllerBase
         try
         {
             await _categoryService.DeleteAsync(id);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    #endregion
+
+    #region Nomination
+
+    [HttpGet("nominations")]
+    public async Task<IEnumerable<NominationShort>> GetNominationAsync(
+        [FromQuery] string? search = null,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15,
+        [FromQuery] bool isDescending = false)
+    {
+        return await _nominationService.SearchAsync(search, pageNumber, pageSize, isDescending);
+    }
+
+    [HttpGet("nomination/{id}")]
+    public async Task<ActionResult<Chapter?>> GetNominationById(string id)
+    {
+        var nomination = await _nominationService.GetAsync(id);
+        if (nomination is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(nomination);
+    }
+
+    [HttpPost("create-nomination")]
+    public async Task<IActionResult> CreateNominationAsync([FromBody] NominationCreate body)
+    {
+        var newId = await _nominationService.CreateAsync(body);
+
+        return CreatedAtAction(nameof(GetChapterById), new { id = newId }, null);
+    }
+
+    [HttpDelete("delete-nomination/{id}")]
+    public async Task<IActionResult> DeleteNominationAsync(string id)
+    {
+        try
+        {
+            await _nominationService.DeleteAsync(id);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    #endregion
+
+    #region Comment
+
+    [HttpGet("comments")]
+    public async Task<IEnumerable<CommentShort>> GetCommentAsync(
+        [FromQuery] string? search = null,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15,
+        [FromQuery] bool isDescending = false)
+    {
+        return await _commentService.SearchAsync(search, pageNumber, pageSize, isDescending);
+    }
+
+    [HttpGet("comment/{id}")]
+    public async Task<ActionResult<Comment?>> GetCommentById(string id)
+    {
+        var comment = await _commentService.GetAsync(id);
+        if (comment is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(comment);
+    }
+
+    [HttpPost("create-comment")]
+    public async Task<IActionResult> CreateCommentAsync([FromBody] CommentCreate body)
+    {
+        var newId = await _commentService.CreateAsync(body);
+        return CreatedAtAction(nameof(GetCommentById), new { id = newId }, null);
+    }
+
+    [HttpDelete("delete-comment/{id}")]
+    public async Task<IActionResult> DeleteCommentAsync(string id)
+    {
+        try
+        {
+            await _commentService.DeleteAsync(id);
         }
         catch (KeyNotFoundException)
         {

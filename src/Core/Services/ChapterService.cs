@@ -30,6 +30,11 @@ public class ChapterService
         return entities.Select(ChapterMapper.ToShortForm);
     }
 
+    public async Task<IEnumerable<Chapter>> GetChaptersByNovelId(string novelId)
+    {
+        return await _chapterRepository.GetByFieldAsync(c => c.NovelId == novelId);
+    }
+
     public async Task<Chapter?> GetAsync(string id)
     {
         return await _chapterRepository.GetAsync(id);
@@ -70,5 +75,8 @@ public class ChapterService
         }
     }
 
-
+    public async Task DeleteChaptersByNovelIdAsync(string novelId)
+    {
+        await _chapterRepository.DeleteByFieldAsync(c => c.NovelId == novelId);
+    }
 }

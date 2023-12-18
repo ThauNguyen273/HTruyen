@@ -4,7 +4,6 @@ using Core.Repositories.Bases;
 using Core.Repositories.Parameters;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using System.IO.IsolatedStorage;
 
 namespace Core.Repositories;
 public class NovelRepository : Repository<Novel>, INovelRepository

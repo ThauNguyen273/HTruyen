@@ -35,7 +35,7 @@ public class AuthorService
 
     public async Task<string> CreateAsync(AuthorCreateUpdate create)
     {
-        var rank = await _rankRepository.GetAsync(create.RankId);
+        var rank = await _rankRepository.GetAsync(create.RankId!);
         if(rank is null)
         {
             throw new KeyNotFoundException();
@@ -51,7 +51,7 @@ public class AuthorService
     public async Task ReplaceAsync(string id, AuthorCreateUpdate update)
     {
         var entity = await _authorRepository.GetAsync(id) ?? throw new KeyNotFoundException();
-        var rank = await _rankRepository.GetAsync(update.RankId);
+        var rank = await _rankRepository.GetAsync(update.RankId!);
         if (rank is null)
         {
             throw new KeyNotFoundException();

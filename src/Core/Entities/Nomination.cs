@@ -13,8 +13,16 @@ namespace Core.Entities
         public string? Id { get; set; }
         public EvaluateType? Rating { get; set; }
         public required string Content { get; set; }
-        public required UserInfo User { get; set; }
-        public required NovelInfo Novel { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public required string UserId { get; set; }
+        public UserInfo? User { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public required string NovelId { get; set; }
+        public NovelInfo? Novel { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime DateCreated { get; set; }
     }
 }

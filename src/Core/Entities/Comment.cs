@@ -10,9 +10,17 @@ namespace Core.Entities
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public required UserInfo User { get; set; }
-        public required NovelInfo Novel { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string UserId { get; set; } = string.Empty;
+        public UserInfo? User { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string NovelId { get; set; } = string.Empty;
+        public NovelInfo? Novel { get; set; }
         public required string Content { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime DateCreated { get; set; }
     }
 }
