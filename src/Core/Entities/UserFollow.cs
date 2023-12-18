@@ -13,9 +13,9 @@ public class UserFollow : IEntity
 
     [BsonRepresentation(BsonType.ObjectId)]
     public required string UserId { get; set; }
-    public required UserInfo User { get; set; }
+    public UserInfo? User { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
     public required string NovelId { get; set; }
-    public required NovelInfo Novel { get; set; }
+    public NovelInfo? Novel { get; set; }
 }

@@ -22,16 +22,16 @@ public class NominationRepository : Repository<Nomination>, INominationRepositor
 
         if (!string.IsNullOrWhiteSpace(userName))
         {
-            query = query.Where(x => x.User.UserName.Contains(userName));
+            query = query.Where(x => x.User!.UserName.Contains(userName));
         }
 
         if (isDescending)
         {
-            query = query.OrderByDescending(p => p.User.UserName);
+            query = query.OrderByDescending(p => p.User!.UserName);
         }
         else
         {
-            query = query.OrderBy(p => p.User.UserName);
+            query = query.OrderBy(p => p.User!.UserName);
         }
 
         var nominations = await query

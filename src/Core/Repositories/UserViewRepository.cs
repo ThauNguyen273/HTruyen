@@ -22,16 +22,16 @@ public class UserViewRepository : Repository<UserView>, IUserViewRepository
 
         if (!string.IsNullOrWhiteSpace(userNameOrNovelName))
         {
-            query = query.Where(x => x.User.UserName.Contains(userNameOrNovelName) || x.Novel.NovelName.Contains(userNameOrNovelName));
+            query = query.Where(x => x.User!.UserName.Contains(userNameOrNovelName) || x.Novel!.NovelName.Contains(userNameOrNovelName));
         }
 
         if (isDescending)
         {
-            query = query.OrderByDescending(p => p.User.UserName);
+            query = query.OrderByDescending(p => p.User!.UserName);
         }
         else
         {
-            query = query.OrderBy(p => p.User.UserName);
+            query = query.OrderBy(p => p.User!.UserName);
         }
 
         var views = await query

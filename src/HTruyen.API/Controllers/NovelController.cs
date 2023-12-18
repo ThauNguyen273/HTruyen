@@ -18,19 +18,28 @@ public class NovelController : ControllerBase
     private readonly CategoryService _categoryService;
     private readonly NominationService _nominationService;
     private readonly CommentService _commentService;
+    private readonly UserViewService _userViewService;
+    private readonly UserFollowService _userFollowService;
+    private readonly UserFavoriteService _userFavoriteService;
 
     public NovelController(
         NovelService novelService, 
         ChapterService chapterService, 
         CategoryService categoryService,
         NominationService nominationService,
-        CommentService commentService)
+        CommentService commentService,
+        UserViewService userViewService,
+        UserFollowService userFollowService,
+        UserFavoriteService userFavoriteService)
     {
         _novelService = novelService;
         _chapterService = chapterService;
         _categoryService = categoryService;
         _nominationService = nominationService;
         _commentService = commentService;
+        _userViewService = userViewService;
+        _userFollowService = userFollowService;
+        _userFavoriteService = userFavoriteService;
     }
 
     #region Novel
@@ -406,6 +415,135 @@ public class NovelController : ControllerBase
         catch (KeyNotFoundException)
         {
             return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    #endregion
+
+    #region View
+
+    [HttpGet("novel/views/{novelId}")]
+    public async Task<ActionResult<IEnumerable<UserView>>> GetViewsByNovelId(string novelId)
+    {
+        try
+        {
+            var views = await _userViewService.GetViewsByNovelId(novelId);
+
+            if (views is null || !views.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(views);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpDelete("novel/delete-views/{novelId}")]
+    public async Task<IActionResult> DeleteViewsByNovelIdAsync(string novelId)
+    {
+        try
+        {
+            await _userViewService.DeleteViewsByNovelIdAsync(novelId);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+
+        return NoContent();
+    }
+
+    #endregion
+
+    #region Follow
+
+    [HttpGet("novel/follows/{novelId}")]
+    public async Task<ActionResult<IEnumerable<UserFollow>>> GetFollowsByNovelId(string novelId)
+    {
+        try
+        {
+            var chapters = await _userFollowService.GetFollowsByNovelId(novelId);
+
+            if (chapters is null || !chapters.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(chapters);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpDelete("novel/delete-follows/{novelId}")]
+    public async Task<IActionResult> DeleteFollowsByNovelIdAsync(string novelId)
+    {
+        try
+        {
+            await _userFollowService.DeleteFollowsByNovelIdAsync(novelId);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+
+        return NoContent();
+    }
+
+    #endregion
+
+    #region Favorite
+
+    [HttpGet("novel/favorites/{novelId}")]
+    public async Task<ActionResult<IEnumerable<UserFavorite>>> GetFavoritesByNovelId(string novelId)
+    {
+        try
+        {
+            var favorite = await _userFavoriteService.GetFavoritesByNovelId(novelId);
+
+            if (favorite is null || !favorite.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(favorite);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpDelete("novel/delete-favorites/{novelId}")]
+    public async Task<IActionResult> DeleteFavoritesByNovelIdAsync(string novelId)
+    {
+        try
+        {
+            await _userFavoriteService.DeleteFavoritesByNovelIdAsync(novelId);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
         }
 
         return NoContent();

@@ -41,7 +41,7 @@ public class AuthorService
             throw new KeyNotFoundException();
         }
         var author = AuthorMapper.ToEntity(create);
-        author.Rank = rank;
+        author.RankId = rank.Id!;
         author.DateCreated = DateTime.Now;
         await _authorRepository.CreateAsync(author);
 
@@ -57,7 +57,7 @@ public class AuthorService
             throw new KeyNotFoundException();
         }
         AuthorMapper.ToEntity(update, entity);
-        entity.Rank = rank;
+        entity.RankId = rank.Id!;
         entity.DateUpdated = DateTime.Now;
         await _authorRepository.ReplaceAsync(entity);
     }
