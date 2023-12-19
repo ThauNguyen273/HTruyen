@@ -1,4 +1,5 @@
-﻿using Core.DTOs.Users;
+﻿using Core.Common.Class;
+using Core.DTOs.Users;
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Mappers;
@@ -44,8 +45,14 @@ public class UserFeedbackService
             throw new KeyNotFoundException();
         }
 
+        var userInfo = new UserInfo
+        {
+            UserId = user.Id!,
+            UserName = user.Name
+        };
+
         var feedback = UserFeedbackMapper.ToEntity(create);
-        feedback.UserId = user.Id!;
+        feedback.User = userInfo;
         feedback.Status = Common.Enums.CurrentStatus.Awaiting_Approval;
         feedback.DateCreated = DateTime.Now;
         await _userFeedbackRepository.CreateAsync(feedback);

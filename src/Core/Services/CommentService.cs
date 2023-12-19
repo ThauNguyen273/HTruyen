@@ -48,12 +48,12 @@ public class CommentService
 
     public async Task<string> CreateAsync(CommentCreate create)
     {
-        var user = await _userRepository.GetAsync(create.UserId!);
+        var user = await _userRepository.GetAsync(create.UserId);
         if(user is null)
         {
             throw new KeyNotFoundException();
         }
-        var novel = await _novelRepository.GetAsync(create.NovelId!);
+        var novel = await _novelRepository.GetAsync(create.NovelId);
         if(novel is null)
         {
             throw new KeyNotFoundException();

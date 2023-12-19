@@ -1,4 +1,5 @@
-﻿using Core.DTOs.Users;
+﻿using Core.Common.Class;
+using Core.DTOs.Users;
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Mappers;
@@ -51,16 +52,26 @@ public class UserFavoriteService
         {
             throw new KeyNotFoundException();
         }
-
         var novel = await _novelRepository.GetAsync(create.NovelId);
         if (novel is null)
         {
             throw new KeyNotFoundException();
         }
 
+        var userInfo = new UserInfo
+        {
+            UserId = user.Id!,
+            UserName = user.Name
+        };
+        var novelInfo = new NovelInfo
+        {
+            NovelId = novel.Id!,
+            NovelName = novel.Name
+        };
+
         var favorite = UserFavoriteMapper.ToEntity(create);
-        favorite.UserId = user.Id!;
-        favorite.NovelId = novel.Id!;
+        favorite.User = userInfo;
+        favorite.Novel = novelInfo;
         await _userFavoriteRepository.CreateAsync(favorite);
 
         return favorite.Id!;

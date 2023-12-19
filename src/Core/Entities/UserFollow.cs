@@ -12,10 +12,10 @@ public class UserFollow : IEntity
     public string? Id { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public required string UserId { get; set; }
+    public string UserId { get; set; } = string.Empty;
     public UserInfo? User { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public required string NovelId { get; set; }
+    public string NovelId { get; set; } = string.Empty;
     public NovelInfo? Novel { get; set; }
 }

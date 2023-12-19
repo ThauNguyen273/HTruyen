@@ -7,6 +7,4 @@ public class ChapterInfo
     public required string ChapterId { get; set; }
     [Required(ErrorMessage = "ChapterName is required.")]
     public required string ChapterName { get; set; }
-    public DateTime DateCreated { get; set; }
-    public DateTime DateUpdated { get; set; }
 }

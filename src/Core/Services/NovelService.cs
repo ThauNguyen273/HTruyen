@@ -74,71 +74,7 @@ public class NovelService
         novel.IsVip = false;
         novel.DateCreated = DateTime.Now;
         await _novelRepository.CreateAsync(novel);
-        /*
-        if(create.Categories != null)
-        {
-            foreach (var categoryInfo in create.Categories)
-            {
-                var category = new CategoryInfo
-                {
-                    CategoryId = categoryInfo.CategoryId,
-                    CategoryName = categoryInfo.CategoryName
-                };
-
-                novel.Categories ??= new List<CategoryInfo>();
-                novel.Categories.Add(category);
-            }
-        }
-
-        if(create.Chapters != null)
-        {
-            foreach(var chapterInfo in create.Chapters)
-            {
-                var chapter = new ChapterInfo
-                {
-                    ChapterId = chapterInfo.ChapterId,
-                    ChapterName = chapterInfo.ChapterName,
-                    DateCreated = DateTime.Now
-                };
-
-                novel.Chapters ??= new List<ChapterInfo>();
-                novel.Chapters.Add(chapter);
-            }
-        }
-
-        if(create.Nominations != null)
-        {
-            foreach(var nominationInfo in create.Nominations)
-            {
-                var nomination = new NominationInfo
-                {
-                    NominationId = nominationInfo.NominationId,
-                    NominationRating = nominationInfo.NominationRating
-                };
-
-                novel.Nominations ??= new List<NominationInfo>();
-                novel.Nominations.Add(nomination);
-            }
-        }
-
-        if(create.Comments != null)
-        {
-            foreach (var commentInfo in create.Comments)
-            {
-                var comment = new CommentInfo
-                {
-                    CommentId = commentInfo.CommentId,
-                    CommentContent = commentInfo.CommentContent,
-                    DateCreated = DateTime.Now
-                };
-                
-                novel.Comments ??= new List<CommentInfo>();
-                novel.Comments.Add(comment);
-            }
-        }
-
-        await _novelRepository.ReplaceAsync(novel.Id!, novel);
-        */
+        
         return novel.Id!;
     }
 
@@ -189,7 +125,6 @@ public class NovelService
                 {
                     chater.ChapterId = chapterInfo.ChapterId;
                     chater.ChapterName = chapterInfo.ChapterName;
-                    chater.DateUpdated = DateTime.Now;
                 }
             }
         }

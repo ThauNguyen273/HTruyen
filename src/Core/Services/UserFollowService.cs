@@ -4,6 +4,7 @@ using Core.Interfaces.Repositories;
 using Core.Mappers;
 using Core.Repositories.Parameters;
 using Core.Repositories;
+using Core.Common.Class;
 
 namespace Core.Services;
 
@@ -52,16 +53,26 @@ public class UserFollowService
         {
             throw new KeyNotFoundException();
         }
-
         var novel = await _novelRepository.GetAsync(create.NovelId);
         if (novel is null)
         {
             throw new KeyNotFoundException();
         }
 
+        var userInfo = new UserInfo
+        {
+            UserId = user.Id!,
+            UserName = user.Name
+        };
+        var novelInfo = new NovelInfo
+        {
+            NovelId = novel.Id!,
+            NovelName = novel.Name
+        };
+
         var follow = UserFollowMapper.ToEntity(create);
-        follow.UserId = user.Id!;
-        follow.NovelId = novel.Id!;
+        follow.User = userInfo;
+        follow.Novel = novelInfo;
         await _userFollowRepository.CreateAsync(follow);
 
         return follow.Id!;

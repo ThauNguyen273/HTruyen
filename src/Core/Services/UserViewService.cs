@@ -5,6 +5,7 @@ using Core.DTOs.Users;
 using Core.Entities;
 using Core.Repositories;
 using Core.DTOs.Chapters;
+using Core.Common.Class;
 
 namespace Core.Services;
 
@@ -69,10 +70,26 @@ public class UserViewService
             throw new KeyNotFoundException();
         }
 
+        var userInfo = new UserInfo
+        {
+            UserId = user.Id!,
+            UserName = user.Name
+        };
+        var novelInfo = new NovelInfo
+        {
+            NovelId = novel.Id!,
+            NovelName = novel.Name
+        };
+        var chapterInfo = new ChapterInfo
+        {
+            ChapterId = chapter.Id!,
+            ChapterName = chapter.Name
+        };
+
         var view = UserViewMapper.ToEntity(create);
-        view.UserId = user.Id!;
-        view.NovelId = novel.Id!;
-        view.ChapterId = chapter.Id!;
+        view.User = userInfo;
+        view.Novel = novelInfo;
+        view.Chapter = chapterInfo;
         await _userViewRepository.CreateAsync(view);
 
         return view.Id!;
@@ -99,10 +116,26 @@ public class UserViewService
             throw new KeyNotFoundException();
         }
 
+        var userInfo = new UserInfo
+        {
+            UserId = user.Id!,
+            UserName = user.Name
+        };
+        var novelInfo = new NovelInfo
+        {
+            NovelId = novel.Id!,
+            NovelName = novel.Name
+        };
+        var chapterInfo = new ChapterInfo
+        {
+            ChapterId = chapter.Id!,
+            ChapterName = chapter.Name
+        };
+
         UserViewMapper.ToEntity(update, entity);
-        entity.UserId = user.Id!;
-        entity.NovelId = novel.Id!;
-        entity.ChapterId = chapter.Id!;
+        entity.User = userInfo;
+        entity.Novel = novelInfo;
+        entity.Chapter = chapterInfo;
         await _userViewRepository.ReplaceAsync(entity);
     }
 
