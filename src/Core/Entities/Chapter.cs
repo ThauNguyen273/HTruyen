@@ -1,21 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using Core.Entities.Interfaces;
+using Core.Common.Class;
 
-namespace Core.Entities
+namespace Core.Entities;
+
+public class Chapter : IEntity
 {
-    public class Chapter
-    {
-        public int Id { get; set; }
-        public required string Title { get; set; }
-        public required string Content { get; set; }
-        public DateTime Created { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
 
-        #region Relationship
-        public int NovelId { get; set; }
-        public required Novel Novel { get; set; }
-        #endregion
-    }
+    [BsonRequired]
+    public string Name { get; set; } = string.Empty;
+
+    [BsonRequired]
+    public string Content { get; set; } = string.Empty;
+
+    public bool IsVip { get; set; }
+
+    public double ChapterPrice { get; set; } = 0;
+
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string NovelId { get; set; } = string.Empty;
+
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime DateCreated { get; set; }
+
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime DateUpdated { get; set; }
 }

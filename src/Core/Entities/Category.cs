@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using Core.Entities.Interfaces;
 
 namespace Core.Entities
 {
-    public class Category
+    public class Category : IEntity
     {
-        public int Id { get; set; }
-        public required string Name { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+
+        [BsonRequired]
+        public string Name { get; set; } = string.Empty;
     }
 }

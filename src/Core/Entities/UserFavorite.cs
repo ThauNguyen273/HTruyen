@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using Core.Entities.Interfaces;
+using Core.Common.Class;
 
-namespace Core.Entities
+namespace Core.Entities;
+
+public class UserFavorite : IEntity
 {
-    public class UserFavorite
-    {
-        public int Id { get; set; }
 
-        #region Relationship
-        public int UserId { get; set; }
-        public required User User { get; set; }
-        public int NovelId { get; set; }
-        public required Novel Novel { get; set; }
-        #endregion
-    }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string UserId { get; set; } = string.Empty;
+    public UserInfo? User { get; set; }
+
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string NovelId { get; set; } = string.Empty;
+    public NovelInfo? Novel { get; set; }
 }

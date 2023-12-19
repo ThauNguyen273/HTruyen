@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTruyen.API", "HTruyen.API\HTruyen.API.csproj", "{AB3A043F-E8B0-4476-AC46-9CE4D02429CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTruyen.API", "HTruyen.API\HTruyen.API.csproj", "{AB3A043F-E8B0-4476-AC46-9CE4D02429CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8739FBED-8B20-4842-B389-833E97E7786E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{F91C2457-E2C0-4251-B42A-16213EC4C37F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{8739FBED-8B20-4842-B389-833E97E7786E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{8739FBED-8B20-4842-B389-833E97E7786E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8739FBED-8B20-4842-B389-833E97E7786E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8739FBED-8B20-4842-B389-833E97E7786E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F91C2457-E2C0-4251-B42A-16213EC4C37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F91C2457-E2C0-4251-B42A-16213EC4C37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F91C2457-E2C0-4251-B42A-16213EC4C37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F91C2457-E2C0-4251-B42A-16213EC4C37F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

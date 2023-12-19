@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Common.Enums;
+using Core.Entities.Interfaces;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
-namespace Core.Entities
+namespace Core.Entities;
+public class User : IEntity
 {
-    public class User
-    {
-        public int Id { get; set; }
-        public required string Name { get; set; }
-        public string? Email { get; set; }
-        public required string Password { get; set; }
-        public required string PhoneNumber { get; set; }
-        public string? Address { get; set; }
-        public DateTime Created { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
 
-        #region Relationship
-        public int RoleId { get; set; }
-        public required Role Role { get; set; } 
-        public int UserPlanId { get; set; }
-        public UserPlan? UserPlan { get; set; }
-        public int UserWalletId { get; set; }
-        public required UserWallet UserWallet { get; set; }
-        #endregion
-    }
+    [BsonRequired]
+    [EmailAddress]
+    public string Email { get; set; } = string.Empty;
+
+    [BsonRequired]
+    public string Name { get; set; } = string.Empty;
+    public string? Address { get; set; }
+    public string? Description { get; set; }
+    public GenderType? Gender { get; set; }
+
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime DateCreated { get; set; }
+
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime DateUpdated { get; set; }
 }
+
+
