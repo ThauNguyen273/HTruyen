@@ -5,6 +5,7 @@ using Core.DTOs.Accounts;
 using Core.Entities;
 using Core.Common.Helpers;
 using Core.Common.Class;
+using Core.DTOs.Users;
 
 namespace Core.Services;
 
@@ -17,6 +18,7 @@ public class AccountService
     private readonly IWalletRepository _walletRepository;
     private readonly IAuthorRepository _authorRepository;
     private readonly IUserRepository _userRepository;
+    private readonly UserService _userService;
     private readonly JwtService _jwtService;
     private readonly Validation _validation;
 
@@ -26,6 +28,7 @@ public class AccountService
         IWalletRepository walletRepository,
         IAuthorRepository authorRepository,
         IUserRepository userRepository,
+        UserService userService,
         JwtService jwtService,
         Validation validation)
     {
@@ -34,6 +37,7 @@ public class AccountService
         _walletRepository = walletRepository;
         _authorRepository = authorRepository;
         _userRepository = userRepository;
+        _userService = userService;
         _jwtService = jwtService;
         _validation = validation;
     }
@@ -101,14 +105,17 @@ public class AccountService
             {
                 Email = register.Email,
                 Name = register.Name,
-                DateCreated = DateTime.Now
+                Address = null,
+                Description = null,
+                Gender = Common.Enums.GenderType.Male,
+                DateCreated = DateTime.UtcNow
             };
             await _userRepository.CreateAsync(user);
 
             var wallet = new Wallet
             {
                 Balance = 0,
-                DateCreated = DateTime.Now,
+                DateCreated = DateTime.UtcNow,
             };
             await _walletRepository.CreateAsync(wallet);
 
@@ -156,14 +163,14 @@ public class AccountService
             {
                 Email = register.Email,
                 Name = register.Name,
-                DateCreated = DateTime.Now
+                DateCreated = DateTime.UtcNow
             };
             await _authorRepository.CreateAsync(author);
 
             var wallet = new Wallet
             {
                 Balance = 0,
-                DateCreated = DateTime.Now
+                DateCreated = DateTime.UtcNow
             };
             await _walletRepository.CreateAsync(wallet);
 

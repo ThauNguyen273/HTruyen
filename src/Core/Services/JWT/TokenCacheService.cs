@@ -33,7 +33,7 @@ public class TokenCacheService
         return false;
     }
 
-    public void InvalidateToken(string accountId)
+    public void RemoveToken(string accountId)
     {
         _cache.Remove(accountId);
     }

@@ -21,6 +21,14 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
         return entity;
     }
+    public virtual async Task<TEntity> GetByEmailAsync(string email)
+    {
+        var entity = await Database.Collection<TEntity>()
+            .Find(e => (e as IEntityWithEmail).Email == email)
+            .FirstOrDefaultAsync();
+
+        return entity;
+    }
     public virtual async Task<IEnumerable<TEntity>> GetByFieldAsync(Expression<Func<TEntity, bool>> filter)
     {
         var entities = await Database.Collection<TEntity>()

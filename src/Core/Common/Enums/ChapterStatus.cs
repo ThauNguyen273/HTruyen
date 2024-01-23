@@ -2,6 +2,7 @@
 
 public enum ChapterStatus
 {
-    Approved = 1,
+    Approved = 2,
+    Pending = 1,
     Unapproved = 0
 }

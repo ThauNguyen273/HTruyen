@@ -9,5 +9,6 @@ namespace Core.DTOs.Categories
     public record struct  CategoryCreateUpdate
     {
         public required string Name { get; set; }
+        public string Description { get; set; }
     }
 }

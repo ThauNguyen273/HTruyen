@@ -25,7 +25,7 @@ public class Account : IEntity
 
     [BsonRepresentation(BsonType.ObjectId)]
     public string? WalletId { get; set; }
-    public UserWallet? Wallet { get; set; }
+    public WalletInfo? Wallet { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
     public string? UserId { get; set; }

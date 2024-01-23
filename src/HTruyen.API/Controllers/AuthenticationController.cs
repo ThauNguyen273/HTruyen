@@ -97,9 +97,10 @@ public class AuthenticationController : ControllerBase
             {
                 return NotFound();
             }
-            _tokenCacheService.InvalidateToken(accountId);
+            _tokenCacheService.RemoveToken(accountId);
 
-            return Ok(new { Message = "Logout successful" });
+            //return Ok(new { Message = "Logout successful" });
+            return Ok(accountId);
         }
         catch (SecurityTokenException ex)
         {
