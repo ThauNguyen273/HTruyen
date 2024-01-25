@@ -14,5 +14,6 @@ public interface IRepository<TEntity> where TEntity : IEntity
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(string id);
     Task DeleteByFieldAsync(Expression<Func<TEntity, bool>> filter);
+    Task<uint> GetAllCountAsync();
 }
 

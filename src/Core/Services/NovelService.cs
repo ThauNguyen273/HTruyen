@@ -4,8 +4,9 @@ using Core.Mappers;
 using Core.Repositories.Parameters;
 using Core.Entities;
 using Core.Common.Class;
-using System.ComponentModel.Design;
-using Core.Repositories;
+using Core.Common.Enums;
+using System.Globalization;
+using System.Text;
 
 namespace Core.Services;
 public class NovelService
@@ -34,6 +35,77 @@ public class NovelService
         var entities = await _novelRepository.SearchAsync(nameOrAuthorname ?? string.Empty, pagination, isDescending);
 
         return entities.Select(NovelMapper.ToShortForm);
+    }
+
+    public async Task<IEnumerable<Novel>> GetNovelByStatus(
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.GetNovelByStatus(status, pagination);
+    }
+
+    public async Task<IEnumerable<Novel>> GetNovelByCategoryOTAsync(
+        CategoryOfType categoryOfType,
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.GetNovelByCategoryOTAsync(categoryOfType, status,pagination);
+    }
+
+    public async Task<IEnumerable<Novel>> GetNovelByCategoryAsync(
+        CategoryOfType categoryOfType, 
+        string categoryId,
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.GetNovelByCategoryAsync(categoryOfType, categoryId, status, pagination);
+    }
+
+    public async Task<IEnumerable<Novel>> SearchByManyAsync(
+        string? name,
+        string? categoryId,
+        CategoryOfType? categoryOfType,
+        NovelStatusType? novelStatusType,
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.SearchNovelByManyAsync(
+            name, 
+            categoryId, 
+            categoryOfType, 
+            novelStatusType, 
+            status,
+            pagination);
+    }
+
+    public async Task<IEnumerable<Novel>> GetNovelByTimeAsync(
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.GetNovelByTimeAsync(status, pagination);
+    }
+
+    public async Task<uint> GetCountByCategoryAsync(
+        CategoryOfType categoryOfType,
+        string categoryId,
+        CurrentStatus status = CurrentStatus.Approved)
+    {
+        return await _novelRepository.GetCountByCategoryAsync(categoryOfType, categoryId, status);
+    }
+
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _novelRepository.GetAllCountAsync();
     }
 
     public async Task<Novel?> GetAsync(string id)
@@ -65,14 +137,15 @@ public class NovelService
         {
             CategoryId = category.Id!,
             CategoryName = category.Name
-    };
+        };
 
         var novel = NovelMapper.ToEntity(create);
         novel.Author = authorInfo;
-        novel.Status = Common.Enums.NovelStatusType.Continue;
         novel.Category = categoryInfo;
-        novel.IsVip = false;
-        novel.DateCreated = DateTime.Now;
+        novel.MetalTitle = ConvertNameToMetalTitle(create.Name);
+        novel.NovelST = Common.Enums.NovelStatusType.Continue;
+        novel.Status = Common.Enums.CurrentStatus.Awaiting_Approval;
+        novel.DateCreated = DateTime.UtcNow;
         await _novelRepository.CreateAsync(novel);
         
         return novel.Id!;
@@ -81,24 +154,27 @@ public class NovelService
     public async Task ReplaceAsync(string id, NovelUpdate update)
     {
         var novel = await _novelRepository.GetAsync(id) ?? throw new KeyNotFoundException();
-        
-        // Cập nhật các thuộc tính dựa trên update
-        novel.Name = update.Name;
-        novel.Description = update.Description;
-        novel.Status = update.Status;
-        novel.ViewCount = update.ViewCount;
-        novel.FollowCount = update.FollowCount;
-        novel.FavoriteCount = update.FavoriteCount;
-        novel.CommentCount = update.CommentCount;
-        novel.Chapters = update.Chapters;
-        novel.Nominations = update.Nominations;
-        novel.Comments = update.Comments;
-        novel.DateUpdated = DateTime.Now;
 
-        // Cập nhật các thực thể liên quan
-        UpdateRelatedEntities(novel, update);
+        var category = await _categoryRepository.GetAsync(update.CategoryId!) ?? throw new KeyNotFoundException();
+        var categoryInfo = new CategoryInfo
+        {
+            CategoryId = category.Id!,
+            CategoryName = category.Name
+        };
 
-        // Thay thế tiểu thuyết hiện có
+        NovelMapper.ToEntity(update, novel);
+        novel.Category = categoryInfo;
+        novel.MetalTitle = ConvertNameToMetalTitle(update.Name);
+        novel.DateUpdated = DateTime.UtcNow;
+        await _novelRepository.ReplaceAsync(novel);
+    }
+
+    public async Task CensorNovel(string id, NovelUpdateStatus status)
+    {
+        var novel = await _novelRepository.GetAsync(id) ?? throw new KeyNotFoundException();
+
+        NovelMapper.ToEntityStatus(status, novel);
+        novel.DateUpdated = DateTime.UtcNow;
         await _novelRepository.ReplaceAsync(novel);
     }
 
@@ -114,45 +190,29 @@ public class NovelService
         }
     }
 
-    private void UpdateRelatedEntities(Novel novel, NovelUpdate update)
+    private string ConvertNameToMetalTitle(string name)
     {
-        if(update.Chapters != null)
+        string withoutPunctuation = RemoveDiacritics(name);
+        string metalTitle = withoutPunctuation.Replace(" ", "-").ToLower();
+
+        return metalTitle;
+    }
+
+    private string RemoveDiacritics(string text)
+    {
+        // Dùng bảng mã Unicode để loại bỏ dấu thanh
+        string normalizedString = text.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
         {
-            foreach(var  chapterInfo in update.Chapters)
+            // Bỏ qua các ký tự dấu thanh
+            if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
             {
-                var chater = novel.Chapters?.FirstOrDefault(c => c.ChapterId == chapterInfo.ChapterId);
-                if(chater != null)
-                {
-                    chater.ChapterId = chapterInfo.ChapterId;
-                    chater.ChapterName = chapterInfo.ChapterName;
-                }
+                stringBuilder.Append(c);
             }
         }
 
-        if(update.Nominations != null)
-        {
-            foreach(var nominationInfo in update.Nominations)
-            {
-                var nomination = novel.Nominations?.FirstOrDefault(n => n.NominationId == nominationInfo.NominationId);
-                if(nomination != null)
-                {
-                    nomination.NominationId = nominationInfo.NominationId;
-                    nomination.NominationRating = nominationInfo.NominationRating;
-                }
-            }
-        }
-
-        if(update.Comments != null)
-        {
-            foreach(var commentInfo in update.Comments)
-            {
-                var comment = novel.Comments?.FirstOrDefault(c => c.CommentId == commentInfo.CommentId);
-                if(comment != null)
-                {
-                    comment.CommentId = commentInfo.CommentId;
-                    comment.CommentContent = commentInfo.CommentContent;
-                }
-            }
-        }
+        return stringBuilder.ToString();
     }
 }

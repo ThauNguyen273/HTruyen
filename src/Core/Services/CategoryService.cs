@@ -29,6 +29,11 @@ public class CategoryService
         return entities.Select(CategoryMapper.ToShortForm);
     }
 
+    public async Task<IEnumerable<Category>> GetAllAsync()
+    {
+        return await _categoryRepository.GetAllAsync();
+    }
+
     public async Task<Category?> GetAsync(string id)
     {
         return await _categoryRepository.GetAsync(id);

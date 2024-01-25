@@ -45,6 +45,13 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
         return entities;
     }
+    public virtual async Task<uint> GetAllCountAsync()
+    {
+        var query = Database.Collection<TEntity>();
+        var result = await query.EstimatedDocumentCountAsync();
+
+        return Convert.ToUInt32(result);
+    }
     public virtual async Task CreateAsync(TEntity entity)
     {
         await Database.Collection<TEntity>()

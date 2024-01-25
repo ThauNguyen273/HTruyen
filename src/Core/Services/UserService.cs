@@ -39,41 +39,7 @@ public class UserService
     {
         var entity = UserMapper.ToEntity(create);
         entity.DateCreated = DateTime.UtcNow;
-        entity.DateUpdated = DateTime.UtcNow;
         await _userRepository.CreateAsync(entity);
-
-        #region Created Image
-
-        var imagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/Content/default_avatar.jpg");
-        var imageDefault = File.ReadAllBytes(imagePath);
-
-        var extension = Path.GetExtension(imagePath);
-        var mediaType = FormFileContants.GetMediaType(extension);
-
-        var image = new Image
-        {
-            MediaType = mediaType,
-            Data = imageDefault
-        };
-        await _imageRepository.CreateAsync(image);
-
-        var imageId = await _imageRepository.GetAsync(image.Id!);
-        if (imageId == null)
-        {
-            throw new KeyNotFoundException();
-        }
-        var imageInfo = new ImageInfo 
-        {
-            ImageId = image.Id!,
-            ImageMediaType = image.MediaType,
-            ImageData = image.Data
-        };
-
-        entity.ImageId = imageId.Id;
-        entity.Image = imageInfo;
-        await _userRepository.UpdateAsync(entity);
-
-        #endregion
 
         return entity.Id!;
     }
