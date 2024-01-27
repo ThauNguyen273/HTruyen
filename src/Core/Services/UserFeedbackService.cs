@@ -39,20 +39,7 @@ public class UserFeedbackService
 
     public async Task<string> CreateAsync(UserFeedbackCreate create)
     {
-        var user = await _userRepository.GetAsync(create.UserId);
-        if (user is null)
-        {
-            throw new KeyNotFoundException();
-        }
-
-        var userInfo = new UserInfo
-        {
-            UserId = user.Id!,
-            UserName = user.Name
-        };
-
         var feedback = UserFeedbackMapper.ToEntity(create);
-        feedback.User = userInfo;
         feedback.Status = Common.Enums.CurrentStatus.Awaiting_Approval;
         feedback.DateCreated = DateTime.Now;
         await _userFeedbackRepository.CreateAsync(feedback);

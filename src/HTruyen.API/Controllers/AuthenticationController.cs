@@ -44,6 +44,19 @@ public class AuthenticationController : ControllerBase
         }
     }
 
+    [HttpGet("auth/get-account-role")]
+    public IActionResult GetAccountId(string token)
+    {
+        try
+        {
+            var accountId = _jwtService.GetAccountIdFromToken(token);
+            return Ok(new { AccountId = accountId });
+        } catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
     [HttpPost("auth/register")]
     public async Task<IActionResult> Register([FromBody] RegisterAccount body)
     {

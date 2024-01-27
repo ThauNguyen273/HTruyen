@@ -14,24 +14,24 @@ public class UserFeedbackRepository : Repository<UserFeedback>, IUserFeedbackRep
     }
 
     public async Task<List<UserFeedback>> SearchAsync(
-        string userName,
+        string nameOrEmail,
         PaginationParameters pagination,
         bool isDescending)
     {
         var query = Database.Collection<UserFeedback>().AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(userName))
+        if (!string.IsNullOrWhiteSpace(nameOrEmail))
         {
-            query = query.Where(x => x.User!.UserName.Contains(userName));
+            query = query.Where(x => x.Name.Contains(nameOrEmail));
         }
 
         if (isDescending)
         {
-            query = query.OrderByDescending(p => p.User!.UserName);
+            query = query.OrderByDescending(p => p.Name);
         }
         else
         {
-            query = query.OrderBy(p => p.User!.UserName);
+            query = query.OrderBy(p => p.Name);
         }
 
         var feedbacks = await query
