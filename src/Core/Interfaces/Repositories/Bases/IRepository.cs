@@ -5,6 +5,7 @@ namespace Core.Interfaces.Repositories.Bases;
 public interface IRepository<TEntity> where TEntity : IEntity
 {
     Task<TEntity?> GetAsync(string id);
+    Task<TEntity> GetByEmailAsync(string email);
     Task<IEnumerable<TEntity>> GetByFieldAsync(Expression<Func<TEntity, bool>> filter);
     Task<List<TEntity>> GetAllAsync();
     Task CreateAsync(TEntity entity);
@@ -13,5 +14,6 @@ public interface IRepository<TEntity> where TEntity : IEntity
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(string id);
     Task DeleteByFieldAsync(Expression<Func<TEntity, bool>> filter);
+    Task<uint> GetAllCountAsync();
 }
 

@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Common.Helpers;
 using Core.Interfaces.Repositories;
 using Core.Repositories;
 using Core.Services;
@@ -36,6 +37,8 @@ namespace HTruyen.API.Extensions
             services.AddScoped<IUserFeedbackRepository, UserFeedbackRepository>();
             services.AddScoped<IUserFollowRepository, UserFollowRepository>();
             services.AddScoped<IUserViewRepository, UserViewRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IImageRepository, ImageRepository>();
 
             return services;
         }
@@ -55,6 +58,11 @@ namespace HTruyen.API.Extensions
             services.AddScoped<UserFollowService>();
             services.AddScoped<UserViewService>();
             services.AddScoped<UserFeedbackService>();
+            services.AddScoped<JwtService>();
+            services.AddScoped<Validation>();
+            services.AddScoped<TokenCacheService>();
+            services.AddScoped<AccountService>();
+            services.AddScoped<ImageService>();
 
             return services;
         }

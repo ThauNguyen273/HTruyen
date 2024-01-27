@@ -1,4 +1,6 @@
-﻿using Core.DTOs.Users;
+﻿using Core.Common.Class;
+using Core.Common.Constants;
+using Core.DTOs.Users;
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Mappers;
@@ -8,10 +10,12 @@ namespace Core.Services;
 public class UserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IImageRepository _imageRepository;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, IImageRepository imageRepository)
     {
         _userRepository = userRepository;
+        _imageRepository = imageRepository;
     }
 
     public async Task<IEnumerable<UserShort>> SearchAsync(
@@ -34,8 +38,7 @@ public class UserService
     public async Task<string> CreateAsync(UserCreateUpdate create)
     {
         var entity = UserMapper.ToEntity(create);
-        entity.DateCreated = DateTime.Now;
-        entity.DateUpdated = DateTime.Now;
+        entity.DateCreated = DateTime.UtcNow;
         await _userRepository.CreateAsync(entity);
 
         return entity.Id!;
@@ -45,7 +48,7 @@ public class UserService
     {
         var entity = await _userRepository.GetAsync(id) ?? throw new KeyNotFoundException();
         UserMapper.ToEntity(update, entity);
-        entity.DateUpdated = DateTime.Now;
+        entity.DateUpdated = DateTime.UtcNow;
         await _userRepository.UpdateAsync(entity);
     }
 

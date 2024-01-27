@@ -12,5 +12,7 @@ namespace Core.Entities
 
         [BsonRequired]
         public string Name { get; set; } = string.Empty;
+        public string MetalTitle { get; set; } = string.Empty;
+        public string? Description { get; set; }
     }
 }

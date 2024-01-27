@@ -1,4 +1,5 @@
-﻿using Core.DTOs.Categories;
+﻿using Core.Common.Enums;
+using Core.DTOs.Categories;
 using Core.DTOs.Chapters;
 using Core.DTOs.Comments;
 using Core.DTOs.Nominations;
@@ -52,6 +53,92 @@ public class NovelController : ControllerBase
         [FromQuery] bool isDescending = false)
     {
         return await _novelService.SearchAsync(search, pageNumber, pageSize, isDescending);
+    }
+
+    [HttpGet("novel/search")]
+    public async Task<IEnumerable<Novel>> SearchAsync(
+        [FromQuery] string? name = null,
+        [FromQuery] string? categoryId = null,
+        [FromQuery] CategoryOfType? categoryOfType = null,
+        [FromQuery] NovelStatusType? novelStatusType = null,
+        [FromQuery] CurrentStatus status = CurrentStatus.Approved,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.SearchByManyAsync(
+            name,
+            categoryId,
+            categoryOfType,
+            novelStatusType,
+            status,
+            pageNumber, 
+            pageSize);
+    }
+
+    [HttpGet("novel/search-status")]
+    public async Task<IEnumerable<Novel>> GetNovelByStatus(
+        [FromQuery] CurrentStatus status = CurrentStatus.Awaiting_Approval,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.GetNovelByStatus(
+            status,
+            pageNumber,
+            pageSize);
+    }
+
+    [HttpGet("novel/search-categoryOT")]
+    public async Task<IEnumerable<Novel>> GetNovelByCategoryOTAsync(
+        [FromQuery] CategoryOfType categoryOfType,
+        [FromQuery] CurrentStatus status,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.GetNovelByCategoryOTAsync(
+            categoryOfType,
+            status,
+            pageNumber,
+            pageSize);
+    }
+
+    [HttpGet("novel/search-category")]
+    public async Task<IEnumerable<Novel>> GetNovelByCategoryAsync(
+        [FromQuery] CategoryOfType categoryOfType,
+        [FromQuery] string categoryId,
+        [FromQuery] CurrentStatus status,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.GetNovelByCategoryAsync(
+            categoryOfType,
+            categoryId,
+            status,
+            pageNumber,
+            pageSize);
+    }
+
+    [HttpGet("novel/search-new-update")]
+    public async Task<IEnumerable<Novel>> GetNovelByTimeAsync(
+        [FromQuery] CurrentStatus status,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.GetNovelByTimeAsync(status, pageNumber, pageSize);
+    }
+
+    [HttpGet("novel/count-category")]
+    public async Task<uint> GetCountByCategory(
+        [FromQuery] CategoryOfType categoryOfType,
+        [FromQuery] string categoryId,
+        [FromQuery] CurrentStatus status = CurrentStatus.Approved)
+    {
+        return await _novelService.GetCountByCategoryAsync(categoryOfType, categoryId, status);
+    }
+
+    [HttpGet("novel/count-all")]
+    public async Task<uint> GetAllCountNovelAsync()
+    {
+        return await _novelService.GetAllCountAsync();
     }
 
     [HttpGet("novel/{id}")]
@@ -121,6 +208,25 @@ public class NovelController : ControllerBase
         try
         {
             await _novelService.ReplaceAsync(id, body);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        return NoContent();
+    }
+
+    [HttpPut("novel/censor-novel")]
+    public async Task<IActionResult> CensorNovel(string id, [FromBody] NovelUpdateStatus body)
+    {
+        try
+        {
+            await _novelService.CensorNovel(id, body);
         }
         catch (KeyNotFoundException)
         {
@@ -268,6 +374,13 @@ public class NovelController : ControllerBase
         [FromQuery] bool isDescending = false)
     {
         return await _categoryService.SearchAsync(search, pageNumber, pageSize, isDescending);
+    }
+
+    [HttpGet("categories-all")]
+    public async Task<IEnumerable<Category>> GetAllAsync()
+    {
+        var categories = await _categoryService.GetAllAsync();
+        return categories;
     }
 
     [HttpGet("category/{id}")]
