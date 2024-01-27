@@ -24,7 +24,7 @@ const Navbar: FC = () => {
           <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
               className="h-8"
-              src="public\HTruyện-logos.png"
+              src="/HTruyện-logos.png"
               alt="HTruyen Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
