@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  webapi:
+    image: htruyen-webapi:latest
+    build:
+      context: .
+      dockerfile: HTruyen.API/Dockerfile
+    depends_on:
+      - database
+
+  database:
+    image: mongo:latest
+
+  web:
+    image: htruyen-web:latest
+    build:
+      context: HTruyen.Web
+    depends_on:
+      - webapi
