@@ -4,7 +4,7 @@ import { GetCategory, Category } from '../../Services/Categories/CategoryService
 import NovelListVertical from '../../Components/Novels/NovelListVerTical';
 
 const CategoryDetail: React.FC = () => {
-  const { categoryMetalTile, categoryId } = useParams<{ categoryMetalTile: string, categoryId: string }>();
+  const { categoryId } = useParams<{ categoryMetalTile: string, categoryId: string }>();
   const [categoryDetail, setCategoryDetail] = useState<Category | null>(null);
 
   useEffect(() => {

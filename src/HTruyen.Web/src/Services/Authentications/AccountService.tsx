@@ -1,6 +1,6 @@
 import Api from '../ApiUrl/Api'
 
-export const Login = async (params:{email: string, password: string}) => {
+export const login = async (params:{email: string, password: string}) => {
   try {
     const response = await Api.post('/auth/login', params);
     return response.data;
@@ -9,7 +9,7 @@ export const Login = async (params:{email: string, password: string}) => {
   }
 };
 
-export const Register = async (params: { name: string; email: string; password: string; dateCreated: string }) => {
+export const register = async (params: { name: string; email: string; password: string; dateCreated: string }) => {
   try {
     const response = await Api.post('/auth/register', params);
     return response.data;

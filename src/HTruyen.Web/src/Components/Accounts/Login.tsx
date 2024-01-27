@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Login } from "../../Services/Authentications/AccountService";
+import { login } from "../../Services/Authentications/AccountService";
 import { useNavigate  } from "react-router-dom";
 
 export default function LoginAccount() {
@@ -12,7 +12,7 @@ export default function LoginAccount() {
     e.preventDefault();
 
     try {
-      const response = await Login({email, password});
+      const response = await login({email, password});
       const { Token } = response;
       
       // Lưu token vào local storage hoặc trạng thái đăng nhập của ứng dụng (tùy thuộc vào cách bạn quản lý đăng nhập)

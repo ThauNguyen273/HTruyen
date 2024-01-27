@@ -23,7 +23,7 @@ const NovelList: React.FC<NovelListProps> = ({ novels }) => {
               />
               </div>
               <h3 className="flex items-center justify-between font-bold">{novel.name}</h3>
-              <h3 className="flex items-center text-gray-500 dark:text-gray-400">{novel.author.AuthorName}</h3>
+              <h3 className="flex items-center text-gray-500 dark:text-gray-400">{novel.author.authorName}</h3>
             </a>
           </li>
         ))}

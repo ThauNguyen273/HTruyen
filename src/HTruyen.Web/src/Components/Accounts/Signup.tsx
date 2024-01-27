@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Register} from '../../Services/Authentications/AccountService'
+import {register} from '../../Services/Authentications/AccountService'
 
 export default function Registration() {
 
@@ -22,7 +22,7 @@ export default function Registration() {
                 dateCreated: new Date().toISOString()
             };
 
-            const response = await Register(accountData);
+            const response = await register(accountData);
             console.log('Registration successful:', response);
             setSuccessMessage('Registration successful!');
             setErrorMessage('');
