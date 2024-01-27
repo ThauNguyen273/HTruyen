@@ -1,0 +1,37 @@
+version: '3.8'
+name: htruyen
+
+services:
+  webapi:
+    container_name: htruyen-webapi
+    restart: on-failure:2
+    environment:
+      - MongoConnection__ConnectionString=mongodb://thaunguyen273:thau270320@database:27017
+      - MongoConnection__DatabaseName=HTruyenDB
+      - TZ=Asia/Ho_Chi_Minh
+    ports:
+      - "27320:8080"
+
+  database:
+    container_name: htruyen-database
+    restart: on-failure:2
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=thaunguyen273
+      - MONGO_INITDB_ROOT_PASSWORD=thau270320
+    ports:
+      - "27321:27017"
+    volumes:
+      - htruyen:/data/db
+
+  web:
+    container_name: htruyen-web
+    restart: on-failure:2
+    build:
+      args:
+        - REACT_APP_ENP=https://ht-api.corn207.top/api/
+    ports:
+      - "27322:80"
+
+volumes:
+  htruyen:
+    external: true
