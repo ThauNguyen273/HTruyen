@@ -12,12 +12,10 @@ public class UserFeedback : IEntity
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
-
-    [BsonRepresentation(BsonType.ObjectId)]
-    public required string UserId { get; set; }
-    public UserInfo? User { get; set; }
-    public required string Subject { get; set; }
-    public required string Content { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Subject { get; set; } = string.Empty;
+    public string Content { get; set; } = string.Empty;
     public CurrentStatus? Status { get; set; } = CurrentStatus.Awaiting_Approval;
 
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]

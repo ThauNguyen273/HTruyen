@@ -221,7 +221,7 @@ public class NovelController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut("novel/censor-novel")]
+    [HttpPut("novel/censor-novel/{id}")]
     public async Task<IActionResult> CensorNovel(string id, [FromBody] NovelUpdateStatus body)
     {
         try

@@ -11,7 +11,6 @@ namespace Core.DTOs.Users;
 public record struct UserFeedbackShort
 {
     public required string Id { get; set; }
-    public required UserInfo User { get; set; }
     public CurrentStatus? Status { get; set; }
     public DateTime DateCreated { get; set; }
 }
