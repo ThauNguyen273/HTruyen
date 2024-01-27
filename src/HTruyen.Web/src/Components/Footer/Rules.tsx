@@ -35,7 +35,7 @@ const Rules: React.FC = () => {
                     <li>HTruyen nghiêm cấm mua bán truyện ngoài luồng trên web và app của mình mà không thông qua các kênh chính thức.</li>
                     <li>Nghiêm cấm quảng cáo các website, ứng dụng khác trên tất cả các kênh của HTruyen.</li>
                     <li>Việc đăng ký tên tài khoản là số điện thoại, email và các thông tin nhạy cảm khác là bị cấm tại HTruyen.</li>
-                    <li>Mọi hành động gây phương hại đến lợi ích của TruyenYY và cộng đồng sẽ bị block vĩnh viễn mà không cần báo trước.</li>
+                    <li>Mọi hành động gây phương hại đến lợi ích của HTruyen và cộng đồng sẽ bị block vĩnh viễn mà không cần báo trước.</li>
                     <li>Quy tắc có thể thay đổi tùy theo tình hình thực tế mà không cần báo trước.</li>
                 </ol>
                 <h3 className="mt-2 font-bold px-2">B. Quy Tắc Đăng Truyện </h3>
@@ -46,7 +46,7 @@ const Rules: React.FC = () => {
                     <li>Nội dung chương phải trình bày đẹp, nếu có rác như câu cú lủng củng, từ sai lỗi chính tả quá nhiều, có đường link tới các trang web ngoài sẽ bị xóa.</li>
                     <li>Không được sử dụng các từ tục tĩu thiếu văn hóa. Nếu muốn dùng phải thay thế bằng dấu * hoặc dấu gạch ngang (-).</li>
                     <li>Văn bản trình bày phải phân đoạn rõ ràng, nếu viết thành 1 khối dày đặc chữ cũng không được đăng.</li>
-                    <li>TruyenYY để phân biệt các kiểu dịch khác nhau, TruyenYY cho phép thêm vào tiêu đề truyện ví dụ như:<b> Đấu Phá Thương Khung (Dịch), Thiếu Gia Bị Bỏ Rơi (Convert)</b>.</li>
+                    <li>HTruyen để phân biệt các kiểu dịch khác nhau, HTruyen cho phép thêm vào tiêu đề truyện ví dụ như:<b> Đấu Phá Thương Khung (Dịch), Thiếu Gia Bị Bỏ Rơi (Convert)</b>.</li>
                     <li>Truyện có chương quá ngắn, dưới 1000 chữ mỗi chương không được công bố, trừ các thể loại đặc thù như ngôn tình, tản văn, thơ.</li>
                     <li>Truyện có nội dung sắc nặng không được phép đăng tại HTruyen. Nếu cố tình vi phạm, truyện sẽ bị xóa, thành viên truyện sẽ bị khóa và thu hồi tất cả tiền trong truyện cũng như tài khoản. Truyện được xem là sắc nặng nếu mô tả các bộ phận sinh dục của con người hoặc loài vật quá cụ thể chi tiết; mô tả cảnh quan hệ chi tiết và có tính kích dục cao.</li>
                     <li>Bìa truyện không được đưa các thông tin như chức năng của website, thể loại truyện, tính chất, tình tiết trong truyện.</li>
