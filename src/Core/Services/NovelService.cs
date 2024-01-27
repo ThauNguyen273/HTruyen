@@ -7,6 +7,7 @@ using Core.Common.Class;
 using Core.Common.Enums;
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Core.Services;
 public class NovelService
@@ -192,10 +193,15 @@ public class NovelService
 
     private string ConvertNameToMetalTitle(string name)
     {
-        string withoutPunctuation = RemoveDiacritics(name);
+        string withoutPunctuation = RemoveSpecialCharacters(RemoveDiacritics(name));
         string metalTitle = withoutPunctuation.Replace(" ", "-").ToLower();
 
         return metalTitle;
+    }
+
+    private string RemoveSpecialCharacters(string text)
+    {
+        return Regex.Replace(text, "[^a-zA-Z0-9]", "");
     }
 
     private string RemoveDiacritics(string text)

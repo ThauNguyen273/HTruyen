@@ -36,7 +36,7 @@ const NovelListVertical: React.FC<NovelListVerticalProps> = ({novelCategoryId, c
   }, [novelCategoryId]);
 
   return (
-    <div className="">
+    <div className="content-list-novel-vertical">
       {novels.map((novel, index) => (
         <a key={index} className="p-2 flex items-center justify-between" href={`/novel/${novel.metalTitle}/${novel.id}`}>
           <div className="flex-row">
