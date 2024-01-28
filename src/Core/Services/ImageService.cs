@@ -36,20 +36,113 @@ public class ImageService
         return await _imageRepository.GetAsync(id);
     }
 
-    public async Task CreateImageAccountAsync(IFormFile file)
+    public async Task CreateImageAccountAsync(ImageCreateUpdate create,IFormFile file)
     {
-        var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
-        var mediaType = FormFileContants.GetMediaType(extension);
-
-        var data = await GetByteArrayFromImageAsync(file);
-
-        var image = new Image
+        try
         {
-            MediaType = mediaType,
-            Data = data
-        };
+            if (file == null || file.Length == 0)
+            {
+                throw new ArgumentException("No file provided.No file provided.");
+            }
 
-        await _imageRepository.CreateAsync(image);
+            var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            var mediaType = FormFileContants.GetMediaType(extension);
+
+            if (string.IsNullOrEmpty(mediaType))
+            {
+                throw new NotSupportedException("Unsupported media type.");
+            }
+
+            var data = await GetByteArrayFromImageAsync(file);
+
+            var image = new Image
+            {
+                UserId = create.UserId,
+                AuthorId = create.AuthorId,
+                NovelId = create.NovelId,
+                ChapterId = create.ChapterId,
+                MediaType = mediaType,
+                Data = data,
+                DateCreated = DateTime.UtcNow,
+            };
+
+            await _imageRepository.CreateAsync(image);
+        } catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    public async Task<Image> GetImageByUserId(string useId)
+    {
+        return await _imageRepository.GetImageByUserId(useId);
+    }
+
+    public async Task<Image> GetImageByAuthorId(string authorId)
+    {
+        return await _imageRepository.GetImageByAuthorId(authorId);
+    }
+
+    public async Task<Image> GetImageByNovelId(string novelId)
+    {
+        return await _imageRepository.GetImageByNovelId(novelId);
+    }
+
+    public async Task<Image> GetImageByChapterId(string chapterId)
+    {
+        return await _imageRepository.GetImageByChapterId(chapterId);
+    }
+
+    public async Task UpdateImageAccountAsync(string id, ImageCreateUpdate update, IFormFile file)
+    {
+        try
+        {
+            if (file == null || file.Length == 0)
+            {
+                throw new ArgumentException("No file provided.No file provided.");
+            }
+
+            var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            var mediaType = FormFileContants.GetMediaType(extension);
+
+            if (string.IsNullOrEmpty(mediaType))
+            {
+                throw new NotSupportedException("Unsupported media type.");
+            }
+
+            var data = await GetByteArrayFromImageAsync(file);
+
+            var entity = await _imageRepository.GetAsync(id) ?? throw new KeyNotFoundException();
+
+            var image = new Image
+            {
+                UserId = update.UserId,
+                AuthorId = update.AuthorId,
+                NovelId = update.NovelId,
+                ChapterId = update.ChapterId,
+                MediaType = mediaType,
+                Data = data,
+                DateUpdated = DateTime.UtcNow,
+            };
+
+            await _imageRepository.ReplaceAsync(image);
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    public async Task DeleteAsync(string id)
+    {
+        try
+        {
+            await _imageRepository.DeleteAsync(id);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            throw ex;
+        }
     }
 
     private async Task<byte[]> GetByteArrayFromImageAsync(IFormFile file)
