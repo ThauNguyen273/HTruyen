@@ -14,6 +14,8 @@ namespace HTruyen.API.Controllers;
 [ApiController]
 public class NovelController : ControllerBase
 {
+    #region Service Declaration
+
     private readonly NovelService _novelService;
     private readonly ChapterService _chapterService;
     private readonly CategoryService _categoryService;
@@ -24,8 +26,8 @@ public class NovelController : ControllerBase
     private readonly UserFavoriteService _userFavoriteService;
 
     public NovelController(
-        NovelService novelService, 
-        ChapterService chapterService, 
+        NovelService novelService,
+        ChapterService chapterService,
         CategoryService categoryService,
         NominationService nominationService,
         CommentService commentService,
@@ -42,6 +44,8 @@ public class NovelController : ControllerBase
         _userFollowService = userFollowService;
         _userFavoriteService = userFavoriteService;
     }
+
+    #endregion
 
     #region Novel
 
@@ -71,7 +75,7 @@ public class NovelController : ControllerBase
             categoryOfType,
             novelStatusType,
             status,
-            pageNumber, 
+            pageNumber,
             pageSize);
     }
 
@@ -145,7 +149,7 @@ public class NovelController : ControllerBase
     public async Task<ActionResult<Novel?>> GetNovelById(string id)
     {
         var novel = await _novelService.GetAsync(id);
-        if(novel is null)
+        if (novel is null)
         {
             return NotFound();
         }
@@ -158,7 +162,7 @@ public class NovelController : ControllerBase
     {
         try
         {
-            var chapters = await _chapterService.GetChaptersByNovelId(novelId);
+            var chapters = await _chapterService.GetChaptersByNovelIdAsync(novelId);
 
             if (chapters is null || !chapters.Any())
             {
@@ -199,7 +203,7 @@ public class NovelController : ControllerBase
     {
         var newId = await _novelService.CreateAsync(body);
 
-        return CreatedAtAction(nameof(GetNovelById), new {id =  newId}, null);
+        return CreatedAtAction(nameof(GetNovelById), new { id = newId }, null);
     }
 
     [HttpPut("edit-novel/{id}")]
@@ -308,6 +312,39 @@ public class NovelController : ControllerBase
         return await _chapterService.SearchAsync(search, pageNumber, pageSize, isDescending);
     }
 
+    [HttpGet("chapter/search-status")]
+    public async Task<IEnumerable<Chapter>> GetChapterByStatusAsync(
+        [FromQuery] string novelId,
+        [FromQuery] ChapterStatus chapterStatus,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _chapterService.GetChapterByStatusAsync(novelId, chapterStatus, pageNumber, pageSize);
+    }
+
+    [HttpGet("chapter/search-novel/{novelId}")]
+    public async Task<IEnumerable<Chapter>> GetChapterByNovelIdAsync(
+        [FromQuery] string novelId,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _chapterService.GetChaptersByNovelIdAsync(novelId, pageNumber, pageSize);
+    }
+
+    [HttpGet("chapter/count-novel/{novelId}")]
+    public async Task<uint> GetCountByNovelAsync(
+        [FromQuery] string novelId,
+        [FromQuery] ChapterStatus chapterStatus)
+    {
+        return await _chapterService.GetCountByNovelAsync(novelId, chapterStatus);
+    }
+
+    [HttpGet("chapter/count-all")]
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _chapterService.GetAllCountAsync();
+    }
+
     [HttpGet("chapter/{id}")]
     public async Task<ActionResult<Chapter?>> GetChapterById(string id)
     {
@@ -330,6 +367,44 @@ public class NovelController : ControllerBase
 
     [HttpPut("edit-chapter/{id}")]
     public async Task<IActionResult> EditChapterAsync(string id, [FromBody] ChapterUpdate body)
+    {
+        try
+        {
+            await _chapterService.ReplaceAsync(id, body);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        return NoContent();
+    }
+
+    [HttpPut("post-chapter/{id}")]
+    public async Task<IActionResult> PostChapterAsync(string id, [FromBody] ChapterPost body)
+    {
+        try
+        {
+            await _chapterService.ReplaceAsync(id, body);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        return NoContent();
+    }
+
+    [HttpPut("edit-vip/{id}")]
+    public async Task<IActionResult> VipAsync(string id, [FromBody] ChapterVip body)
     {
         try
         {
@@ -450,8 +525,35 @@ public class NovelController : ControllerBase
         return await _nominationService.SearchAsync(search, pageNumber, pageSize, isDescending);
     }
 
+    [HttpGet("nomination/search-novel/{novelId}")]
+    public async Task<IEnumerable<Nomination>> GetNominationByNovelIdAsync(
+        [FromQuery] string novelId,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _nominationService.GetNominationByNovelIdAsync(novelId, pageNumber, pageSize);
+    }
+
+    [HttpGet("nomination/count-novel/{novelId}")]
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        return await _nominationService.GetCountByNovelAsync(novelId);
+    }
+
+    [HttpGet("nomination/all-count")]
+    public async Task<uint> GetAlCountAsync()
+    {
+        return await _nominationService.GetAllCountAsync();
+    }
+
+    [HttpGet("nomination/search-all")]
+    public async Task<List<Nomination>> GetAllNominationAsync()
+    {
+        return await _nominationService.GetAllAsync();
+    }
+
     [HttpGet("nomination/{id}")]
-    public async Task<ActionResult<Chapter?>> GetNominationById(string id)
+    public async Task<ActionResult<Nomination?>> GetNominationById(string id)
     {
         var nomination = await _nominationService.GetAsync(id);
         if (nomination is null)
@@ -499,6 +601,33 @@ public class NovelController : ControllerBase
         return await _commentService.SearchAsync(search, pageNumber, pageSize, isDescending);
     }
 
+    [HttpGet("comment/search-novel/{novelId}")]
+    public async Task<IEnumerable<Comment>> GetCommentByNovelIdAsync(
+        [FromQuery] string novelId,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _commentService.GetCommentByNovelIdAsync(novelId, pageNumber, pageSize);
+    }
+
+    [HttpGet("comment/count-novel/{novelId}")]
+    public async Task<uint> GetCountCommentByNovelAsync(string novelId)
+    {
+        return await _commentService.GetCountByNovelAsync(novelId);
+    }
+
+    [HttpGet("comment/all-count")]
+    public async Task<uint> GetAllCommentCountAsync()
+    {
+        return await _commentService.GetAllCountAsync();
+    }
+
+    [HttpGet("comment/search-all")]
+    public async Task<List<Comment>> GetAllCommentAsync()
+    {
+        return await _commentService.GetAllAsync();
+    }
+
     [HttpGet("comment/{id}")]
     public async Task<ActionResult<Comment?>> GetCommentById(string id)
     {
@@ -536,6 +665,18 @@ public class NovelController : ControllerBase
     #endregion
 
     #region View
+
+    [HttpGet("view/count-novel/{novelId}")]
+    public async Task<uint> GetCountViewByNovelAsync(string novelId)
+    {
+        return await _userViewService.GetCountByNovelAsync(novelId);
+    }
+
+    [HttpGet("view/all-count")]
+    public async Task<uint> GetAllViewCountAsync()
+    {
+        return await _userViewService.GetAllCountAsync();
+    }
 
     [HttpGet("novel/views/{novelId}")]
     public async Task<ActionResult<IEnumerable<UserView>>> GetViewsByNovelId(string novelId)
@@ -643,6 +784,18 @@ public class NovelController : ControllerBase
         }
     }
 
+    [HttpGet("favorite/count-novel/{novelId}")]
+    public async Task<uint> GetCountFavoriteByNovelAsync(string novelId)
+    {
+        return await _userViewService.GetCountByNovelAsync(novelId);
+    }
+
+    [HttpGet("favorite/all-count")]
+    public async Task<uint> GetAllFavoriteCountAsync()
+    {
+        return await _userViewService.GetAllCountAsync();
+    }
+
     [HttpDelete("novel/delete-favorites/{novelId}")]
     public async Task<IActionResult> DeleteFavoritesByNovelIdAsync(string novelId)
     {
@@ -663,4 +816,7 @@ public class NovelController : ControllerBase
     }
 
     #endregion
+
 }
+
+ 

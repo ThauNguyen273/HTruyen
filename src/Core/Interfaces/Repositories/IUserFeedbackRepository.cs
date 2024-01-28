@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.Common.Enums;
+using Core.Entities;
 using Core.Interfaces.Repositories.Bases;
 using Core.Repositories.Parameters;
 
@@ -10,4 +11,7 @@ public interface IUserFeedbackRepository : IRepository<UserFeedback>
         string userName,
         PaginationParameters pagination,
         bool isDescending);
+    Task<IEnumerable<UserFeedback>> GetFeedbackByStatusAsync(
+        CurrentStatus? status,
+        PaginationParameters pagination);
 }

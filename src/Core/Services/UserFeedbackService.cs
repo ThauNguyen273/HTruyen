@@ -1,8 +1,10 @@
 ﻿using Core.Common.Class;
+using Core.Common.Enums;
 using Core.DTOs.Users;
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Mappers;
+using Core.Repositories;
 using Core.Repositories.Parameters;
 
 namespace Core.Services;
@@ -30,6 +32,15 @@ public class UserFeedbackService
         var entities = await _userFeedbackRepository.SearchAsync(userNameOrNovelName ?? string.Empty, pagination, isDescending);
 
         return entities.Select(UserFeedbackMapper.ToShortForm);
+    }
+
+    public async Task<IEnumerable<UserFeedback>> GetNovelByStatus(
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _userFeedbackRepository.GetFeedbackByStatusAsync(status, pagination);
     }
 
     public async Task<UserFeedback?> GetAsync(string id)

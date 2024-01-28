@@ -41,4 +41,15 @@ public class UserViewRepository : Repository<UserView>, IUserViewRepository
 
         return views;
     }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        var filterBuilder = Builders<UserView>.Filter;
+        var novelFilter = filterBuilder.Eq(x => x.NovelId, novelId);
+
+        var count = await Database.Collection<UserView>()
+            .CountDocumentsAsync(novelFilter);
+
+        return Convert.ToUInt32(count);
+    }
 }

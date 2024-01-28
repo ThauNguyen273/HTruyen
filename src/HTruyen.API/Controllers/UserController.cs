@@ -1,4 +1,4 @@
-﻿using Core.DTOs.Chapters;
+﻿using Core.Common.Enums;
 using Core.DTOs.Users;
 using Core.Entities;
 using Core.Services;
@@ -274,6 +274,18 @@ public class UserController : ControllerBase
         [FromQuery] bool isDescending = false)
     {
         return await _userFeedbackService.SearchAsync(search, pageNumber, pageSize, isDescending);
+    }
+
+    [HttpGet("search-status")]
+    public async Task<IEnumerable<UserFeedback>> GetNovelByStatus(
+        [FromQuery] CurrentStatus status = CurrentStatus.Awaiting_Approval,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _userFeedbackService.GetNovelByStatus(
+            status,
+            pageNumber,
+            pageSize);
     }
 
     [HttpGet("feedback/{id}")]

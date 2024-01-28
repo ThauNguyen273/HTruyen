@@ -10,4 +10,6 @@ public interface IUserViewRepository : IRepository<UserView>
         string userNameOrNovelName,
         PaginationParameters pagination,
         bool isDescending);
+
+    Task<uint> GetCountByNovelAsync(string novelId);
 }

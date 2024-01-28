@@ -4,6 +4,7 @@ using Core.Mappers;
 using Core.Repositories.Parameters;
 using Core.Repositories;
 using Core.Entities;
+using Core.Common.Enums;
 
 namespace Core.Services;
 
@@ -30,9 +31,35 @@ public class ChapterService
         return entities.Select(ChapterMapper.ToShortForm);
     }
 
-    public async Task<IEnumerable<Chapter>> GetChaptersByNovelId(string novelId)
+    public async Task<IEnumerable<Chapter>> GetChaptersByNovelIdAsync(
+        string novelId,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
     {
-        return await _chapterRepository.GetByFieldAsync(c => c.NovelId == novelId);
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _chapterRepository.GetChapterByNovelIdAsync(novelId, pagination);
+    }
+
+    public async Task<IEnumerable<Chapter>> GetChapterByStatusAsync(
+        string novelId,
+        ChapterStatus chapterStatus,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _chapterRepository.GetChapterByStatusAsync(novelId, chapterStatus, pagination);
+    }
+
+    public async Task<uint> GetCountByNovelAsync(
+        string novelId,
+        ChapterStatus chapterStatus)
+    {
+        return await _chapterRepository.GetCountByNovelAsync(novelId, chapterStatus);
+    }
+
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _chapterRepository.GetAllCountAsync();
     }
 
     public async Task<Chapter?> GetAsync(string id)
@@ -49,7 +76,8 @@ public class ChapterService
         }
         var chapter = ChapterMapper.ToEntity(create);
         chapter.NovelId = novel.Id!;
-        chapter.DateCreated = DateTime.Now;
+        chapter.ChapterStatus = ChapterStatus.Draft;
+        chapter.DateCreated = DateTime.UtcNow;
         await _chapterRepository.CreateAsync(chapter);
 
         return chapter.Id!;
@@ -59,8 +87,24 @@ public class ChapterService
     {
         var entity = await _chapterRepository.GetAsync(id) ?? throw new KeyNotFoundException();
         ChapterMapper.ToEntity(update, entity);
-        entity.DateUpdated = DateTime.Now;
+        entity.DateUpdated = DateTime.UtcNow;
         await _chapterRepository.ReplaceAsync(entity); 
+    }
+
+    public async Task ReplaceAsync(string id, ChapterPost post)
+    {
+        var entity = await _chapterRepository.GetAsync(id) ?? throw new KeyNotFoundException();
+        ChapterMapper.ToEntityPost(post, entity);
+        entity.DateUpdated = DateTime.UtcNow;
+        await _chapterRepository.ReplaceAsync(entity);
+    }
+
+    public async Task ReplaceAsync(string id, ChapterVip vip)
+    {
+        var entity = await _chapterRepository.GetAsync(id) ?? throw new KeyNotFoundException();
+        ChapterMapper.ToEntityVip(vip, entity);
+        entity.DateUpdated = DateTime.UtcNow;
+        await _chapterRepository.ReplaceAsync(entity);
     }
 
     public async Task DeleteAsync(string id)

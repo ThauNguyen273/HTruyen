@@ -10,4 +10,6 @@ public interface IUserFavoriteRepository : IRepository<UserFavorite>
         string userNameOrNovelName,
         PaginationParameters pagination,
         bool isDescending);
+
+    Task<uint> GetCountByNovelAsync(string novelId);
 }

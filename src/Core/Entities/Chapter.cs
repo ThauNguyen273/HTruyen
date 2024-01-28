@@ -2,6 +2,7 @@
 using MongoDB.Bson;
 using Core.Entities.Interfaces;
 using Core.Common.Class;
+using Core.Common.Enums;
 
 namespace Core.Entities;
 
@@ -23,6 +24,7 @@ public class Chapter : IEntity
 
     [BsonRepresentation(BsonType.ObjectId)]
     public string NovelId { get; set; } = string.Empty;
+    public ChapterStatus ChapterStatus { get; set; } = ChapterStatus.Draft;
 
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime DateCreated { get; set; }

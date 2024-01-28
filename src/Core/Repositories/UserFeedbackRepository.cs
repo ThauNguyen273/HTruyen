@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.Common.Enums;
+using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Repositories.Bases;
 using Core.Repositories.Parameters;
@@ -41,4 +42,21 @@ public class UserFeedbackRepository : Repository<UserFeedback>, IUserFeedbackRep
 
         return feedbacks;
     }
+
+    public async Task<IEnumerable<UserFeedback>> GetFeedbackByStatusAsync(
+        CurrentStatus? status,
+        PaginationParameters pagination)
+    {
+        var filter = Builders<UserFeedback>.Filter.Eq(x => x.Status, status);
+
+        var chapters = await Database.Collection<UserFeedback>()
+            .Find(filter)
+            .SortByDescending(x => x.DateCreated)
+            .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+            .Limit(pagination.PageSize)
+            .ToListAsync();
+
+        return chapters;
+    }
+
 }

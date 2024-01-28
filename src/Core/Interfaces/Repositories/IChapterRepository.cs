@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.Common.Enums;
+using Core.Entities;
 using Core.Interfaces.Repositories.Bases;
 using Core.Repositories.Parameters;
 
@@ -9,4 +10,17 @@ public interface IChapterRepository : IRepository<Chapter>
     string name,
     PaginationParameters pagination,
     bool isDescending);
+
+    Task<IEnumerable<Chapter>> GetChapterByStatusAsync(
+        string novelId,
+        ChapterStatus? chapterStatus,
+        PaginationParameters pagination);
+
+    Task<IEnumerable<Chapter>> GetChapterByNovelIdAsync(
+        string novelId,
+        PaginationParameters pagination);
+
+    Task<uint> GetCountByNovelAsync(
+        string novelId,
+        ChapterStatus chapterStatus);
 }
