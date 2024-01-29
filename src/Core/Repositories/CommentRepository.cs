@@ -41,4 +41,31 @@ public class CommentRepository : Repository<Comment>, ICommentRepository
 
         return comments;
     }
+
+    public async Task<IEnumerable<Comment>> GetCommentByNovelIdAsync(
+        string novelId,
+        PaginationParameters pagination)
+    {
+        var filter = Builders<Comment>.Filter.Eq(x => x.NovelId, novelId);
+
+        var comments = await Database.Collection<Comment>()
+            .Find(filter)
+            .SortByDescending(x => x.DateCreated)
+            .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+            .Limit(pagination.PageSize)
+            .ToListAsync();
+
+        return comments;
+    }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        var filterBuilder = Builders<Comment>.Filter;
+        var novelFilter = filterBuilder.Eq(x => x.NovelId, novelId);
+
+        var count = await Database.Collection<Comment>()
+            .CountDocumentsAsync(novelFilter);
+
+        return Convert.ToUInt32(count);
+    }
 }

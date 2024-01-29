@@ -41,4 +41,15 @@ public class UserFavoriteRepository : Repository<UserFavorite>, IUserFavoriteRep
 
         return favorites;
     }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        var filterBuilder = Builders<UserFavorite>.Filter;
+        var novelFilter = filterBuilder.Eq(x => x.NovelId, novelId);
+
+        var count = await Database.Collection<UserFavorite>()
+            .CountDocumentsAsync(novelFilter);
+
+        return Convert.ToUInt32(count);
+    }
 }

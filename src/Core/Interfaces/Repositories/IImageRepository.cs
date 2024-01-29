@@ -10,4 +10,12 @@ public interface IImageRepository : IRepository<Image>
         string mediaType,
         PaginationParameters pagination,
         bool isDescending);
+
+    Task<Image> GetImageByUserId(string userId);
+
+    Task<Image> GetImageByAuthorId(string authorId);
+
+    Task<Image> GetImageByNovelId(string novelId);
+
+    Task<Image> GetImageByChapterId(string chapterId);
 }

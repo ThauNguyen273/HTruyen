@@ -41,4 +41,48 @@ public class ImageRepository : Repository<Image>, IImageRepository
 
         return images;
     }
+
+    public async Task<Image> GetImageByUserId(string userId)
+    {
+        var filter = Builders<Image>.Filter.Eq(x => x.UserId, userId);
+        
+        var image = await Database.Collection<Image>()
+            .Find(filter)
+            .FirstOrDefaultAsync();
+
+        return image;
+    }
+
+    public async Task<Image> GetImageByAuthorId(string authorId)
+    {
+        var filter = Builders<Image>.Filter.Eq(x => x.UserId, authorId);
+
+        var image = await Database.Collection<Image>()
+            .Find(filter)
+            .FirstOrDefaultAsync();
+
+        return image;
+    }
+
+    public async Task<Image> GetImageByNovelId(string novelId)
+    {
+        var filter = Builders<Image>.Filter.Eq(x => x.UserId, novelId);
+
+        var image = await Database.Collection<Image>()
+            .Find(filter)
+            .FirstOrDefaultAsync();
+
+        return image;
+    }
+
+    public async Task<Image> GetImageByChapterId(string chapterId)
+    {
+        var filter = Builders<Image>.Filter.Eq(x => x.UserId, chapterId);
+
+        var image = await Database.Collection<Image>()
+            .Find(filter)
+            .FirstOrDefaultAsync();
+
+        return image;
+    }
 }

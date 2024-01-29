@@ -28,7 +28,7 @@ services:
     restart: on-failure:2
     build:
       args:
-        - REACT_APP_ENP=https://ht-api.corn207.top/api/
+        - VITE_APIURL=https://ht-api.corn207.top/api/
     ports:
       - "27322:80"
 

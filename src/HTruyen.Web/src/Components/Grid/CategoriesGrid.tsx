@@ -49,7 +49,7 @@ const CategoriesGrid: React.FC = () => {
           categoryId={category.id}
           title={category.name}
           categoryMetalTile={category.metalTitle}
-          imageSrc="public\CategoryDefault.png"/>
+          imageSrc="/CategoryDefault.png"/>
       ))}
     </div>
   );

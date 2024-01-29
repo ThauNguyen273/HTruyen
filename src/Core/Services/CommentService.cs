@@ -41,6 +41,30 @@ public class CommentService
         return await _commentRepository.GetByFieldAsync(c => c.NovelId == novelId);
     }
 
+    public async Task<IEnumerable<Comment>> GetCommentByNovelIdAsync(
+        string novelId,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _commentRepository.GetCommentByNovelIdAsync(novelId, pagination);
+    }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        return await _commentRepository.GetCountByNovelAsync(novelId);
+    }
+
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _commentRepository.GetAllCountAsync();
+    }
+
+    public async Task<List<Comment>> GetAllAsync()
+    {
+        return await _commentRepository.GetAllAsync();
+    }
+
     public async Task<Comment?> GetAsync(string id)
     {
         return await _commentRepository.GetAsync(id);

@@ -3,6 +3,7 @@ using Core.DTOs.Users;
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Mappers;
+using Core.Repositories;
 using Core.Repositories.Parameters;
 
 namespace Core.Services;
@@ -38,6 +39,16 @@ public class UserFavoriteService
     public async Task<IEnumerable<UserFavorite>> GetFavoritesByNovelId(string novelId)
     {
         return await _userFavoriteRepository.GetByFieldAsync(f => f.NovelId == novelId);
+    }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        return await _userFavoriteRepository.GetCountByNovelAsync(novelId);
+    }
+
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _userFavoriteRepository.GetAllCountAsync();
     }
 
     public async Task<UserFavorite?> GetAsync(string id)

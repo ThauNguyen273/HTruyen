@@ -10,4 +10,10 @@ public interface INominationRepository : IRepository<Nomination>
         string userName,
         PaginationParameters pagination,
         bool isDescending);
+
+    Task<uint> GetCountByNovelAsync(string novelId);
+
+    Task<IEnumerable<Nomination>> GetNominationByNovelIdAsync(
+        string novelId,
+        PaginationParameters pagination);
 }

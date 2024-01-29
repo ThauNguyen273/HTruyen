@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿using Core.Common.Enums;
+using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Repositories.Bases;
 using Core.Repositories.Parameters;
@@ -40,5 +41,31 @@ public class NominationRepository : Repository<Nomination>, INominationRepositor
             .ToListAsync();
 
         return nominations;
+    }
+
+    public async Task<IEnumerable<Nomination>> GetNominationByNovelIdAsync(
+        string novelId,
+        PaginationParameters pagination)
+    {
+        var filter = Builders<Nomination>.Filter.Eq(x => x.NovelId, novelId);
+
+        var nominations = await Database.Collection<Nomination>()
+            .Find(filter)
+            .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+            .Limit(pagination.PageSize)
+            .ToListAsync();
+
+        return nominations;
+    }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        var filterBuilder = Builders<Nomination>.Filter;
+        var novelFilter = filterBuilder.Eq(x => x.NovelId, novelId);
+
+        var count = await Database.Collection<Nomination>()
+            .CountDocumentsAsync(novelFilter);
+
+        return Convert.ToUInt32(count);
     }
 }

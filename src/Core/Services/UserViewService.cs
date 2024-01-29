@@ -45,6 +45,16 @@ public class UserViewService
         return await _userViewRepository.GetByFieldAsync(v => v.NovelId == novelId);
     }
 
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        return await _userViewRepository.GetCountByNovelAsync(novelId);
+    }
+
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _userViewRepository.GetAllCountAsync();
+    }
+
     public async Task<UserView?> GetAsync(string id)
     {
         return await _userViewRepository.GetAsync(id);

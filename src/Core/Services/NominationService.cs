@@ -40,6 +40,30 @@ public class NominationService
         return await _nominationRepository.GetByFieldAsync(n => n.NovelId == novelId);
     }
 
+    public async Task<IEnumerable<Nomination>> GetNominationByNovelIdAsync(
+        string novelId,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _nominationRepository.GetNominationByNovelIdAsync(novelId, pagination);
+    }
+
+    public async Task<uint> GetCountByNovelAsync(string novelId)
+    {
+        return await _nominationRepository.GetCountByNovelAsync(novelId);
+    }
+
+    public async Task<uint> GetAllCountAsync()
+    {
+        return await _nominationRepository.GetAllCountAsync();
+    }
+
+    public async Task<List<Nomination>> GetAllAsync()
+    {
+        return await _nominationRepository.GetAllAsync();
+    }
+
     public async Task<Nomination?> GetAsync(string id)
     {
         return await _nominationRepository.GetAsync(id);

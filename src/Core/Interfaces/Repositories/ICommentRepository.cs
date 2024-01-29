@@ -10,4 +10,10 @@ public interface ICommentRepository : IRepository<Comment>
         string userNameOrNovelName,
         PaginationParameters pagination,
         bool isDescending);
+
+    Task<IEnumerable<Comment>> GetCommentByNovelIdAsync(
+        string novelId,
+        PaginationParameters pagination);
+
+    Task<uint> GetCountByNovelAsync(string novelId);
 }
