@@ -12,7 +12,7 @@ builder.Services.AddEntityServices();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Default",policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    options.AddPolicy("Default",policy => policy.WithOrigins("https://ht-web.corn207.top/").AllowAnyHeader().AllowAnyMethod());
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
