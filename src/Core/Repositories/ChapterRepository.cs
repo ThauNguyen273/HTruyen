@@ -58,7 +58,7 @@ public class ChapterRepository : Repository<Chapter>, IChapterRepository
         return chapters;
     }
 
-    public async Task<IEnumerable<Chapter>> GetChapterByStatusAsync(
+    public async Task<IEnumerable<Chapter>> GetChapterByNovelSAndtatusAsync(
         string novelId, 
         ChapterStatus? chapterStatus,
         PaginationParameters pagination)
@@ -87,6 +87,20 @@ public class ChapterRepository : Repository<Chapter>, IChapterRepository
 
         return chapters;
     }
+
+    public async Task<Chapter> GetChapterByStatusAsync(
+        string chapterId, 
+        ChapterStatus chapterStatus)
+    {
+        var filter = Builders<Chapter>.Filter.Eq(c => c.Id, chapterId) &
+                     Builders<Chapter>.Filter.Eq(c => c.ChapterStatus, chapterStatus);
+
+        var chapter = await Database.Collection<Chapter>()
+            .Find(filter)
+            .FirstOrDefaultAsync();
+
+        return chapter;
+    } 
 
     public async Task<uint> GetCountByNovelAsync(
         string novelId,

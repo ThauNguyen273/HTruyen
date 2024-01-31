@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login } from "../../Services/Authentications/AccountService";
+import { getAccountId, getRole, login } from "../../Services/Authentications/AccountService";
 import { useNavigate  } from "react-router-dom";
 
 export default function LoginAccount() {
@@ -12,18 +12,21 @@ export default function LoginAccount() {
     e.preventDefault();
 
     try {
-      const response = await login({email, password});
-      const { Token } = response;
+        const token = await login({ email, password });
+        // Lưu token vào local storage
+        localStorage.setItem('token', token);
       
-      // Lưu token vào local storage hoặc trạng thái đăng nhập của ứng dụng (tùy thuộc vào cách bạn quản lý đăng nhập)
-      localStorage.setItem('token', Token);
-      
-      // Chuyển hướng đến trang chính sau khi đăng nhập thành công
-      navigate('/');
-
-      window.location.reload();
+        const role = await getRole(token);
+        const accountId = await getAccountId(token)
+        // Lưu role vào local storage
+        localStorage.setItem('role', role);
+        localStorage.setItem('accountId', accountId)
+        
+        //Chuyển hướng đến trang chính sau khi đăng nhập thành công
+        navigate('/');
+        window.location.reload();
     } catch (error) {
-      setError('Invalid email or password'); // Thay đổi thông báo lỗi tùy thuộc vào API trả về
+      setError('Invalid email or password'); 
     }
   };
     return (
@@ -32,7 +35,7 @@ export default function LoginAccount() {
                 <div>
                     <a href="/">
                     <img
-                        src="public\HTruyện-logos.png" 
+                        src="/HTruyện-logos.png" 
                         alt="Logo"
                         className="h-20 w-20"
                     />

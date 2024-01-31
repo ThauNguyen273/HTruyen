@@ -41,4 +41,14 @@ public class AccountRepository : Repository<Account>, IAccountRepository
 
         return accounts;
     }
+
+    public async Task<Account> GetAccountByEmail(string email)
+    {
+        var filter = Builders<Account>.Filter.Eq(x => x.Email, email);
+        var account = Database.Collection<Account>()
+            .Find(filter)
+            .FirstOrDefault();
+
+        return account;
+    }
 }

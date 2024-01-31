@@ -1,152 +1,173 @@
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import { GetList, Category } from "../../../Services/Categories/CategoryService";
+import { useState } from "react";
+import CategorySelect from "../../../Components/Categories/CategorySelect";
+import { CreateNovel } from "../../../Services/Novels/NovelService";
+import NotificationSuccess from "../../../Components/Notification/NotificationSuccess";
+import { useParams } from "react-router-dom";
 
 const NovelCreate: React.FC = () => {
-    const novelType = [
+    const {authorId} = useParams();
+    const typeNovel = [
         { label: 'Dịch', value: 1},
         { label: 'Convert', value: 2},
         { label: 'Sáng Tác', value: 3},
     ];
 
-    const [categories, setCategories] = useState<Category[]>([]);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const [novelName, setNovelName] = useState('');
+    const [tqName, setTqName] = useState('');
+    const [tqUrl, setTqUrl] = useState('');
+    const [novelType, setNovelType] = useState('');
+    const [novelDescription, setNovelDescription] = useState('');
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const categoriesData = await GetList();
-                setCategories(categoriesData);
-            } catch (error) {
-                throw error;
+    const handleCreateNovel = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+
+            const categoryOTMap: {[key: string]: number } = {1: 1, 2: 2, 3: 3}
+
+            const novelParams = {
+                authorId: authorId,
+                categoryId: selectedCategory,
+                name: novelName,
+                tqName : tqName,
+                tqUrl: tqUrl,
+                description: novelDescription,
+                categoryOT: categoryOTMap[novelType],
+                novelST: 1,
+                status: 1,
+                dateCreated: new Date().toISOString()
             }
-        }
 
-        fetchCategories();
-    }, []);
+            await CreateNovel(novelParams);
+
+            setSuccessMessage("Truyện đã được tạo thành công!");
+            window.location.reload();
+        } catch (error) {
+            console.error('Error creating novel', error)
+        }
+    }
+
+    const closeNotification = () => {
+        setSuccessMessage(null);
+      };
 
     return (
         <div className="novel-content p-2">
-            <div className="w-full p-2 mb-2 rounded overflow-hidden border border-solid border-gray-300 dark:border-gray-300">
-                <h2 className="flex inline-block border-b-2 border-black mb-2 font-bold items-center text-xl	">
-                    <FontAwesomeIcon icon={faCloudArrowUp} className="px-2"/>
-                    Đăng truyện
-                </h2>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-name" 
-                        className="col-sm-2 px-2">
-                        Tên truyện
-                    </label>
-                    <input
-                        placeholder="Nhập tên truyện"
-                        type="text"
-                        name="name"
-                        className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    />
-                </div>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-tqName" 
-                        className="col-sm-2 px-2">
-                        Tên tiếng trung
-                    </label>
-                    <input
-                        placeholder="Nhập tên tiếng trung"
-                        type="text"
-                        name="name"
-                        className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    />
-                </div>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-name" 
-                        className="col-sm-2 px-2">
-                        Link tiếng trung
-                    </label>
-                    <input
-                        placeholder="Nhập link tiếng trung"
-                        type="text"
-                        name="name"
-                        className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    />
-                </div>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-type" 
-                        className="col-sm-2 px-2">
-                        Loại truyện
-                    </label>
-                    <select
-                        name="novelType"
-                        className="px-1 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    >
-                        <option value="" aria-disabled hidden>
-                            Chọn loại truyện
-                        </option>
-                        {novelType.map((noveltype, index) => (
-                            <option key={index} value={noveltype.value}>
-                                {noveltype.label}
+            {successMessage && (
+                <NotificationSuccess message={successMessage} onClose={closeNotification} />
+            )}
+            <form onSubmit={handleCreateNovel}>
+                <div className="w-full p-2 mb-2 rounded overflow-hidden border border-solid border-gray-300 dark:border-gray-300">
+                    <h2 className="flex inline-block border-b-2 border-black mb-2 font-bold items-center text-xl	">
+                        <FontAwesomeIcon icon={faCloudArrowUp} className="px-2"/>
+                        Đăng truyện
+                    </h2>
+                    <div className="form-group mb-2">
+                        <label
+                            htmlFor="novel-name" 
+                            className="col-sm-2 px-2">
+                            Tên truyện
+                        </label>
+                        <input
+                            placeholder="Nhập tên truyện"
+                            type="text"
+                            name="name"
+                            value={novelName}
+                            onChange={(e) => setNovelName(e.target.value)}
+                            className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            required
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <label
+                            htmlFor="novel-tqName" 
+                            className="col-sm-2 px-2">
+                            Tên tiếng trung
+                        </label>
+                        <input
+                            placeholder="Nhập tên tiếng trung"
+                            type="text"
+                            name="name"
+                            value={tqName}
+                            onChange={(e) => setTqName(e.target.value)}
+                            className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <label
+                            htmlFor="novel-name" 
+                            className="col-sm-2 px-2">
+                            Link tiếng trung
+                        </label>
+                        <input
+                            placeholder="Nhập link tiếng trung"
+                            type="text"
+                            name="name"
+                            value={tqUrl}
+                            onChange={(e) => setTqUrl(e.target.value)}
+                            className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <label
+                            htmlFor="novel-type" 
+                            className="col-sm-2 px-2">
+                            Loại truyện
+                        </label>
+                        <select
+                            name="novelType"
+                            value={novelType}
+                            onChange={(e) => setNovelType(e.target.value)}
+                            className="px-1 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            required
+                        >
+                            <option value="" aria-disabled hidden>
+                                Chọn loại truyện
                             </option>
-                        ))}
-                    </select> 
+                            {typeNovel.map((typeNovel, index) => (
+                                <option key={index} value={typeNovel.value}>
+                                    {typeNovel.label}
+                                </option>
+                            ))}
+                        </select> 
+                    </div>
+                    <div className="form-group mb-2">
+                        <label
+                            htmlFor="novel-category" 
+                            className="col-sm-2 px-2">
+                            Thể loại
+                        </label>
+                        <CategorySelect
+                            selectedCategory={selectedCategory}
+                            onCategoryChange={(value) => setSelectedCategory(value)}
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <label
+                            htmlFor="novel-name" 
+                            className="col-sm-2 px-2">
+                            Giới thiệu
+                        </label>
+                        <textarea
+                            placeholder="Nhập giới thiệu"
+                            name="novel-description"
+                            value={novelDescription}
+                            onChange={(e) => setNovelDescription(e.target.value)}
+                            className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            required
+                        />
+                    </div>
+                    <div className="form-group mb-2 text-center">
+                        <button
+                            type="submit"
+                            className="mx-auto px-2 p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            >Tạo Truyện</button>
+                    </div>
                 </div>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-category" 
-                        className="col-sm-2 px-2">
-                        Thể loại
-                    </label>
-                    <select
-                        name="novelCategory"
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="px-1 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    >
-                        <option value="" disabled hidden>
-                            Chọn thể loại truyện
-                        </option>
-                        {categories.map((category) => (
-                            <option key={category.id} value={category.id}>
-                                {category.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-image"
-                        className="col-sm-2 px-2"
-                    >
-                        Ảnh truyện
-                    </label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        name="novelImage"
-                        className="px-1 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    />
-                </div>
-                <div className="form-group mb-2">
-                    <label
-                        htmlFor="novel-name" 
-                        className="col-sm-2 px-2">
-                        Giới thiệu
-                    </label>
-                    <textarea
-                        placeholder="Nhập giới thiệu"
-                        name="novel-description"
-                        className="px-2 p-2 block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    />
-                </div>
-                <div className="form-group mb-2 text-center">
-                    <button
-                        
-                        className="mx-auto px-2 p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        >Tạo Truyện</button>
-                </div>
-            </div>
+            </form>
         </div>
     )
 }

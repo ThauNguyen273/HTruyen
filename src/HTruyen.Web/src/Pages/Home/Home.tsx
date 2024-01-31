@@ -63,7 +63,7 @@ const Home: React.FC = () => {
               </span>
             </a>
         </h2>
-        <div>
+        <div className='flex items-center justify-between'>
           {/*Sử dụng component NovelList để hiển thị danh sách truyện mới cập nhật */}
           <NovelCreative/>
         </div>

@@ -79,18 +79,18 @@ public class AuthenticationController : ControllerBase
             var token = await _accountService.LoginAsync(body);
             return Ok(new { Token = token });
         }
-        catch (InvalidOperationException ex)
+        catch (InvalidOperationException)
         {
-            return BadRequest(new { Message = ex.Message });
+            return Unauthorized();
         }
     }
 
-    [HttpPost("change-password")]
-    public async Task<IActionResult> ChangePassword(string id, string token, [FromBody] ChangePasswordAccount changePassword)
+    [HttpPost("change-password/{id}")]
+    public async Task<IActionResult> ChangePassword(string id, [FromBody] ChangePasswordAccount changePassword)
     {
         try
         {
-            await _accountService.ChangePasswordAsync(id, token, changePassword);
+            await _accountService.ChangePasswordAsync(id, changePassword);
             return Ok(new { Message = "Password changed successfully" });
         }
         catch (Exception ex)
@@ -112,8 +112,8 @@ public class AuthenticationController : ControllerBase
             }
             _tokenCacheService.RemoveToken(accountId);
 
-            //return Ok(new { Message = "Logout successful" });
-            return Ok(accountId);
+            return Ok(new { Message = "Logout successful" });
+            //return Ok(accountId);
         }
         catch (SecurityTokenException ex)
         {

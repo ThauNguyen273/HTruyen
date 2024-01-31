@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import UserDropdown from '../Dropdown/UserDropdown';
+import { Account, getAccount } from '../../Services/Authentications/AccountService';
 
 const getStoredToken = () => localStorage.getItem('token');
 
@@ -16,7 +17,24 @@ const LINKS: NavbarLink[] = [
 ];
 
 const Navbar: FC = () => {
+  const [account, setAccount] = useState<Account | null>(null) 
   const isLoggedIn = !!getStoredToken();
+
+  useEffect(() => {
+    const fetchAccountInfo = async () => {
+      try {
+        const accountId = localStorage.getItem('accountId')
+        if (accountId) {
+          const accountData = await getAccount(accountId);
+          setAccount(accountData)
+        }
+      } catch (error) {
+        console.log('Error fetching account:', error)
+      }
+    }
+    
+    fetchAccountInfo()
+  },[])
 
   return (
     <nav className="p-4 bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-600">
@@ -43,7 +61,7 @@ const Navbar: FC = () => {
         <div className="flex">
         {isLoggedIn ? (
         // Hiển thị avatar và dropdown nếu đã đăng nhập
-          <UserDropdown avatarSrc="/public/Images/default_avatar.jpg" userName="Test" userEmail="test@gmail.com" />
+          <UserDropdown avatarSrc="/Images/default_avatar.jpg" accountName={account?.name} accountEmail={account?.email} />
         ) : (
           <>
             <a

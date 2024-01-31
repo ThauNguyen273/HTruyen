@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HTruyen.API.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/")]
 [ApiController]
 public class ImageController : ControllerBase
 {
@@ -17,7 +17,7 @@ public class ImageController : ControllerBase
         _imageService = imageService;
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("image/{id}")]
     public async Task<ActionResult<Image>> GetImage(string id)
     {
         var image = await _imageService.GetAsync(id);

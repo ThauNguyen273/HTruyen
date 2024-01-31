@@ -6,6 +6,7 @@ using Core.Entities;
 using Core.Common.Helpers;
 using Core.Common.Class;
 using Core.DTOs.Users;
+using Core.Common.Enums;
 
 namespace Core.Services;
 
@@ -210,7 +211,7 @@ public class AccountService
 
         return account.Id!;
     }
-
+   
     public async Task<string?> LoginAsync(LoginAccount login)
     {
         // Kiểm tra email và mật khẩu có đúng dữ liệu mẫu
@@ -235,23 +236,15 @@ public class AccountService
         return token;
     }
 
-    public async Task ChangePasswordAsync(string id, string token, ChangePasswordAccount changePassword)
+        public async Task ChangePasswordAsync(string id, ChangePasswordAccount changePassword)
     {
-        // Kiểm tra xác thực người dùng, ví dụ: sử dụng token
-        var accountId = _jwtService.GetAccountIdFromToken(token);
-        var isValid = _jwtService.VerifyToken(token, out accountId);
-        if (!isValid || accountId != id)
-        {
-            throw new InvalidOperationException("Invalid token or account ID");
-        }
-
-        // Kiểm tra mật khẩu cũ có đúng không
         var existingAccount = await _accountRepository.GetAsync(id);
-        if (existingAccount == null) 
+        if (existingAccount == null)
         {
             throw new KeyNotFoundException("Account not found");
         }
 
+        // Kiểm tra mật khẩu cũ có đúng không
         if (!_validation.VerifyPassword(existingAccount.Password, changePassword.OldPassword))
         {
             throw new InvalidOperationException("Old password is incorrect");
@@ -270,6 +263,8 @@ public class AccountService
 
         // Lưu mật khẩu mới (đã được mã hóa)
         existingAccount.Password = _validation.HashPassword(changePassword.NewPassword);
+
+        existingAccount.DateUpdated = DateTime.UtcNow;
 
         // Lưu thay đổi vào CSDL
         await _accountRepository.UpdateAsync(existingAccount);

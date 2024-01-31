@@ -13,10 +13,9 @@ export default function Login() {
 
     try {
       const response = await login({email, password});
-      const { Token } = response;
       
       // Lưu token vào local storage hoặc trạng thái đăng nhập của ứng dụng (tùy thuộc vào cách bạn quản lý đăng nhập)
-      localStorage.setItem('token', Token);
+      localStorage.setItem('token', response);
       
       // Chuyển hướng đến trang chính sau khi đăng nhập thành công
       navigate('/');

@@ -14,8 +14,8 @@ export interface Category {
 
 export interface CategorySearchParams {
     search?:string | null
-    pageNumber?: 1
-    pageSize?: 70
+    pageNumber?: number
+    pageSize?: number
     isDescending?: boolean
 }
 

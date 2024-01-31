@@ -11,7 +11,7 @@ public interface IChapterRepository : IRepository<Chapter>
     PaginationParameters pagination,
     bool isDescending);
 
-    Task<IEnumerable<Chapter>> GetChapterByStatusAsync(
+    Task<IEnumerable<Chapter>> GetChapterByNovelSAndtatusAsync(
         string novelId,
         ChapterStatus? chapterStatus,
         PaginationParameters pagination);
@@ -19,6 +19,10 @@ public interface IChapterRepository : IRepository<Chapter>
     Task<IEnumerable<Chapter>> GetChapterByNovelIdAsync(
         string novelId,
         PaginationParameters pagination);
+
+    Task<Chapter> GetChapterByStatusAsync(
+        string chapterId,
+        ChapterStatus chapterStatus);
 
     Task<uint> GetCountByNovelAsync(
         string novelId,

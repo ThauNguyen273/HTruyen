@@ -121,6 +121,25 @@ public class NovelController : ControllerBase
             pageSize);
     }
 
+    [HttpGet("novel/search-author")]
+    public async Task<IEnumerable<Novel>> GetNocelByAuthorAsync(
+        [FromQuery] string authorId,
+        [FromQuery] CurrentStatus status,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.GetNovelByAuthorAsync(authorId, status, pageNumber, pageSize);
+    }
+
+    [HttpGet("novel/author/{authorId}")]
+    public async Task<IEnumerable<Novel>> GetNovelByAuthorIdAsync(
+        string authorId,
+        [FromQuery] ushort pageNumber = 1,
+        [FromQuery] ushort pageSize = 15)
+    {
+        return await _novelService.GetNovelByAuthorIdAsync(authorId, pageNumber, pageSize);
+    }
+
     [HttpGet("novel/search-new-update")]
     public async Task<IEnumerable<Novel>> GetNovelByTimeAsync(
         [FromQuery] CurrentStatus status,
@@ -137,6 +156,14 @@ public class NovelController : ControllerBase
         [FromQuery] CurrentStatus status = CurrentStatus.Approved)
     {
         return await _novelService.GetCountByCategoryAsync(categoryOfType, categoryId, status);
+    }
+
+    [HttpGet("novel/count-chapter")]
+    public async Task<uint> GetCountByNovelId(
+        [FromQuery] string novelId,
+        [FromQuery] ChapterStatus chapterStatus)
+    {
+        return await _chapterService.GetCountByNovelAsync(novelId, chapterStatus);
     }
 
     [HttpGet("novel/count-all")]
@@ -319,10 +346,10 @@ public class NovelController : ControllerBase
         [FromQuery] ushort pageNumber = 1,
         [FromQuery] ushort pageSize = 15)
     {
-        return await _chapterService.GetChapterByStatusAsync(novelId, chapterStatus, pageNumber, pageSize);
+        return await _chapterService.GetChapterByNovelSAndtatusAsync(novelId, chapterStatus, pageNumber, pageSize);
     }
 
-    [HttpGet("chapter/search-novel/{novelId}")]
+    [HttpGet("chapter/search-novel")]
     public async Task<IEnumerable<Chapter>> GetChapterByNovelIdAsync(
         [FromQuery] string novelId,
         [FromQuery] ushort pageNumber = 1,
@@ -331,7 +358,15 @@ public class NovelController : ControllerBase
         return await _chapterService.GetChaptersByNovelIdAsync(novelId, pageNumber, pageSize);
     }
 
-    [HttpGet("chapter/count-novel/{novelId}")]
+    [HttpGet("chapter/status")]
+    public async Task<ActionResult<Chapter?>> GetChapterByStatusAsync(
+        [FromQuery] string chapterId,
+        [FromQuery] ChapterStatus status)
+    {
+        return await _chapterService.GetChapterByStatusAsync(chapterId, status);
+}
+
+[HttpGet("chapter/count-novel")]
     public async Task<uint> GetCountByNovelAsync(
         [FromQuery] string novelId,
         [FromQuery] ChapterStatus chapterStatus)
@@ -527,7 +562,7 @@ public class NovelController : ControllerBase
 
     [HttpGet("nomination/search-novel/{novelId}")]
     public async Task<IEnumerable<Nomination>> GetNominationByNovelIdAsync(
-        [FromQuery] string novelId,
+        string novelId,
         [FromQuery] ushort pageNumber = 1,
         [FromQuery] ushort pageSize = 15)
     {

@@ -12,7 +12,7 @@ const NovelUpdate: React.FC = () => {
             const searchCriteria: NovelSearchNewUpdate = {
               status: 2,
               pageNumber: 1,
-              pageSize: 10,
+              pageSize: 8,
             };
     
             const resultNovels = await GetNovelNewUpdate(searchCriteria);

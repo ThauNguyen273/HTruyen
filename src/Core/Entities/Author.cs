@@ -18,7 +18,6 @@ public class Author : IEntity
 
     [BsonRequired]
     public string Name { get; set; } = string.Empty;
-    public string? AnotherName { get; set; }
     public string? Description { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
@@ -26,8 +25,6 @@ public class Author : IEntity
 
     [BsonIgnoreIfNull]
     public Rank? Rank { get; set; }
-    public ushort NovelCreateCount { get; set; }
-    public uint ChapterCreateCount { get; set; }
 
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
     public DateTime DateCreated { get; set; }

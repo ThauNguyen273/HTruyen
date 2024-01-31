@@ -43,6 +43,22 @@ public class NovelRepository : Repository<Novel>, INovelRepository
         return novels;
     }
 
+    public async Task<IEnumerable<Novel>> GetNovelByAuthorIdAsync(
+        string authorId,
+        PaginationParameters pagination)
+    {
+        var filter = Builders<Novel>.Filter.Eq(x => x.AuthorId, authorId);
+
+        var novels = await Database.Collection<Novel>()
+            .Find(filter)
+            .SortByDescending(x => x.DateUpdated)
+            .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+            .Limit(pagination.PageSize)
+            .ToListAsync();
+
+        return novels;
+    }
+
     public async Task<IEnumerable<Novel>> GetNovelByStatus(
         CurrentStatus status,
         PaginationParameters pagination)
@@ -108,7 +124,7 @@ public class NovelRepository : Repository<Novel>, INovelRepository
             filters.Add(filterBuilder.Eq(x => x.CategoryId, categoryId));
         }
 
-        if (status != null)
+        if (status != 0)
         {
             filters.Add(filterBuilder.Eq(x => x.Status, status));
         }
@@ -124,6 +140,36 @@ public class NovelRepository : Repository<Novel>, INovelRepository
 
         return novels;
 
+    }
+
+    public async Task<IEnumerable<Novel>> GetNovelByAuthorAsync(
+        string authorId,
+        CurrentStatus status,
+        PaginationParameters pagination)
+    {
+        var filterBuilder = Builders<Novel>.Filter;
+        var filters = new List<FilterDefinition<Novel>>();
+
+        if (!string.IsNullOrEmpty(authorId))
+        {
+            filters.Add(filterBuilder.Eq(x => x.AuthorId, authorId));
+        }
+
+        if (status != 0)
+        {
+            filters.Add(filterBuilder.Eq(x => x.Status, status));
+        }
+
+        var combineFilter = filterBuilder.And(filters);
+
+        var novels = await Database.Collection<Novel>()
+            .Find(combineFilter)
+            .SortByDescending(x => x.DateUpdated)
+            .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+            .Limit(pagination.PageSize)
+            .ToListAsync();
+
+        return novels;
     }
 
     public async Task<IEnumerable<Novel>> SearchNovelByManyAsync(

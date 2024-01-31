@@ -13,7 +13,7 @@ const NovelCategoryOT: React.FC = () => {
               categoryOfType: 1,
               status: 2,
               pageNumber: 1,
-              pageSize: 10,
+              pageSize: 8,
             };
     
             const resultNovels = await GetNovelByCategoryOT(searchCriteria);

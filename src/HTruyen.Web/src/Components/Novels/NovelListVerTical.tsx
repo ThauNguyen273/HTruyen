@@ -21,7 +21,7 @@ const NovelListVertical: React.FC<NovelListVerticalProps> = ({novelCategoryId, c
               categoryId: novelCategoryId,
               status: 2,
               pageNumber: 1,
-              pageSize: 20,
+              pageSize: 10,
             };
 
             const resultNovels = await GetNovelByCategory(searchCriteria);

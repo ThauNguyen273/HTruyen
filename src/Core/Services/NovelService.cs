@@ -68,6 +68,25 @@ public class NovelService
         return await _novelRepository.GetNovelByCategoryAsync(categoryOfType, categoryId, status, pagination);
     }
 
+    public async Task<IEnumerable<Novel>> GetNovelByAuthorAsync(
+        string authorId,
+        CurrentStatus status,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.GetNovelByAuthorAsync(authorId, status, pagination);
+    }
+
+    public async Task<IEnumerable<Novel>> GetNovelByAuthorIdAsync(
+        string authorId,
+        ushort pageNumber = 1,
+        ushort pageSize = 15)
+    {
+        var pagination = new PaginationParameters(pageNumber, pageSize);
+        return await _novelRepository.GetNovelByAuthorIdAsync(authorId, pagination);
+    }
+
     public async Task<IEnumerable<Novel>> SearchByManyAsync(
         string? name,
         string? categoryId,
@@ -193,15 +212,10 @@ public class NovelService
 
     private string ConvertNameToMetalTitle(string name)
     {
-        string withoutPunctuation = RemoveSpecialCharacters(RemoveDiacritics(name));
-        string metalTitle = withoutPunctuation.Replace(" ", "-").ToLower();
+        string withoutPunctuation = RemoveDiacritics(name);
+        string convert = withoutPunctuation.Replace(" ", "-").ToLower();
 
-        return metalTitle;
-    }
-
-    private string RemoveSpecialCharacters(string text)
-    {
-        return Regex.Replace(text, "[^a-zA-Z0-9]", "");
+        return convert;
     }
 
     private string RemoveDiacritics(string text)

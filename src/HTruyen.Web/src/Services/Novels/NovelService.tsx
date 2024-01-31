@@ -3,21 +3,22 @@ import { AuthorShort } from '../Authors/AuthorService'
 import { CategoryShort } from '../Categories/CategoryService'
 
 export interface NovelShort{
-  id: string
-  name: string
+  novelId?: string
+  novelName: string
   author: AuthorShort
 }
 
 export interface Novel{
-  id: string
-  authorId: string
+  id?: string
+  authorId?: string
   author: AuthorShort
-  categoryId: string
+  categoryId?: string
   category: CategoryShort
   name: string
   metalTitle: string
   tqName?: string
   tqUrl?: string
+  description?: Novel
   categoryOT: number
   novelST: number
   status: number
@@ -31,13 +32,13 @@ export interface NovelSearchMany{
   categoryId?: string | null
   categoryOfType?: string | null
   novelStatusType?: string | null
-  status?: string | null
+  status?: number | null
   pageNumber?: 1
   pageSize?: 15
 }
 
 export interface NovelSearchStatus{
-  status?: string
+  status?: number
   pageNumber?: 1
   pageSize?: 15
 }
@@ -51,8 +52,15 @@ export interface NovelSearchCategoryOT{
 
 export interface NovelSearchCategory{
   categoryOfType: number
-  categoryId: string
+  categoryId?: string
   status: number 
+  pageNumber?: number
+  pageSize?: number
+}
+
+export interface NovelSearchAuthor{
+  authorId?: string
+  status: number
   pageNumber?: number
   pageSize?: number
 }
@@ -71,9 +79,22 @@ export interface NovelCountByCategory{
 
 export interface NovelSearchParams {
   search?:string | null
-  pageNumber?: 1
-  pageSize?: 70
+  pageNumber?: number
+  pageSize?: 20
   isDescending?: boolean
+}
+
+export interface NovelCreateParams {
+  authorId?: string
+  categoryId: string
+  name: string 
+  tqName?: string | null
+  tqUrl?: string | null
+  description: string
+  categoryOT: number
+  novelST: number
+  status: number
+  dateCreated: string
 }
 
 export const search = async (params: NovelSearchParams = {}): Promise<NovelShort[]> => {
@@ -121,6 +142,15 @@ export const GetNovelByCategory = async (params: NovelSearchCategory): Promise<N
   }
 }
 
+export const GetNovelByAuthor = async (params: NovelSearchAuthor): Promise<Novel[]> => {
+  try {
+    const response = await Api.get('/novel/search-author', {params})
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetNovelNewUpdate = async (params: NovelSearchNewUpdate): Promise<Novel[]> => {
   try {
     const response = await Api.get('/novel/search-new-update', {params})
@@ -148,7 +178,7 @@ export const GetAllCount = async (): Promise<Novel> => {
   }
 }
 
-export const GetNovel = async (novelId: string): Promise<Novel[]> => {
+export const GetNovel = async (novelId?: string): Promise<Novel> => {
   try {
     const response = await Api.get(`/novel/${novelId}`)
     return response.data
@@ -157,20 +187,29 @@ export const GetNovel = async (novelId: string): Promise<Novel[]> => {
   }
 }
 
-export const CreateNovel = async (params: {
-  authorId: string
-  categoryId: string
-  name: string
-  tqName?: string
-  tqUrl?: string
-  description: string
-  categoryOT: number
-  novelST: number
-  status: 1
-  dateCreated: string
-}): Promise<Novel> => {
+export const GetNovelByAuthorId = async (authorId?: string): Promise<Novel[]> =>{
   try {
-    const response = await Api.post('/create-nove', params)
+    const response = await Api.get(`/novel/author/${authorId}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const CreateNovel = async (params: {
+  authorId?: string,
+  categoryId: string,
+  name: string,
+  tqName?: string,
+  tqUrl?: string,
+  description: string,
+  categoryOT: number,
+  novelST: number,
+  status: number,
+  dateCreated: string
+}): Promise<string> => {
+  try {
+    const response = await Api.post('/create-novel', params)
     return response.data
   } catch (error) {
     throw error

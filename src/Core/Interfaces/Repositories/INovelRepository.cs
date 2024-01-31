@@ -11,6 +11,10 @@ public interface INovelRepository : IRepository<Novel>
     PaginationParameters pagination,
     bool isDescending);
 
+    Task<IEnumerable<Novel>> GetNovelByAuthorIdAsync(
+        string authorId,
+        PaginationParameters pagination);
+
     Task<IEnumerable<Novel>> GetNovelByStatus(
         CurrentStatus status,
         PaginationParameters pagination);
@@ -23,6 +27,11 @@ public interface INovelRepository : IRepository<Novel>
     Task<IEnumerable<Novel>> GetNovelByCategoryAsync(
         CategoryOfType? categoryOfType,
         string categoryId,
+        CurrentStatus status,
+        PaginationParameters pagination);
+
+    Task<IEnumerable<Novel>> GetNovelByAuthorAsync(
+        string authorId,
         CurrentStatus status,
         PaginationParameters pagination);
 

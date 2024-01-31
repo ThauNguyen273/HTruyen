@@ -20,8 +20,6 @@ public class User : IEntity
     public string Name { get; set; } = string.Empty;
     public string? Address { get; set; }
     public string? Description { get; set; }
-    public string? ImageId { get; set; }
-    public ImageInfo? Image { get; set; }
     public GenderType? Gender { get; set; }
 
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
