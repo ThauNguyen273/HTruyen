@@ -23,6 +23,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
