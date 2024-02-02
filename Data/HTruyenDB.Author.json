@@ -1,0 +1,176 @@
+[{
+  "_id": {
+    "$oid": "65b55efdff260d890b23a112"
+  },
+  "Email": "tacgia@gmail.com",
+  "Name": "Tân Phong",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T19:52:29.340Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b56123ff260d890b23a115"
+  },
+  "Email": "tacgia1@gmail.com",
+  "Name": "Nhị Cửu Hám Đăng",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:01:39.494Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b56138ff260d890b23a118"
+  },
+  "Email": "tacgia2@gmail.com",
+  "Name": "Mộc Mỹ Xuân",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:02:00.790Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b5616cff260d890b23a11b"
+  },
+  "Email": "tacgia3@gmail.com",
+  "Name": "Manh Đát Tiểu Mập Mạp",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:02:52.468Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b56189ff260d890b23a11e"
+  },
+  "Email": "tacgia4@gmail.com",
+  "Name": "Hỗn Độn Đông QUua",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:03:21.498Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b561a5ff260d890b23a121"
+  },
+  "Email": "tacgia5@gmail.com",
+  "Name": "Thanh Phong Loan",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:03:49.472Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b561ebff260d890b23a124"
+  },
+  "Email": "tacgia6@gmail.com",
+  "Name": "Vạn Tộc Chi Thần",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:04:59.029Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b56213ff260d890b23a127"
+  },
+  "Email": "tacgia7@gmail.com",
+  "Name": "Diệp Tiểu Thất",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:05:39.809Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b5622fff260d890b23a12a"
+  },
+  "Email": "tacgia8@gmail.com",
+  "Name": "Lam Thiên",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:06:07.242Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b56253ff260d890b23a12d"
+  },
+  "Email": "tacgia9@gmail.com",
+  "Name": "Thăng Đấu Yên Dâng",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:06:43.402Z"
+  },
+  "DateUpdated": null
+},
+{
+  "_id": {
+    "$oid": "65b56272ff260d890b23a130"
+  },
+  "Email": "tacgia10@gmail.com",
+  "Name": "Lão Ưng Cật Tiểu Kê",
+  "AnotherName": null,
+  "Description": null,
+  "RankId": null,
+  "NovelCreateCount": 0,
+  "ChapterCreateCount": 0,
+  "DateCreated": {
+    "$date": "2024-01-27T20:07:14.314Z"
+  },
+  "DateUpdated": null
+}]

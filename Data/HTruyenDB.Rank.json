@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "65b55e17ff260d890b23a10a"
+  },
+  "Name": "Người Mới",
+  "Benefit": "Không có",
+  "DateCreated": {
+    "$date": "2024-01-27T19:48:39.092Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:48:39.092Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65b55e2dff260d890b23a10b"
+  },
+  "Name": "Tiềm Năng",
+  "Benefit": "Có 1 truyện tạo thu nhập, được hưởng chia 3:7",
+  "DateCreated": {
+    "$date": "2024-01-27T19:49:01.912Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:49:01.912Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65b55e3eff260d890b23a10c"
+  },
+  "Name": "Đồng",
+  "Benefit": "Có 3 truyện tạo thu nhập, Được hưởng chia 4:6, Được đẩy đề cử 1 tháng 1 lần",
+  "DateCreated": {
+    "$date": "2024-01-27T19:49:18.984Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:49:18.984Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65b55e4fff260d890b23a10d"
+  },
+  "Name": "Bạc",
+  "Benefit": "Có 6 truyện tạo thu nhập, Được hưởng chia 5:5, Được đẩy đề cử 1 tháng 2 lần",
+  "DateCreated": {
+    "$date": "2024-01-27T19:49:35.953Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:49:35.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65b55e5eff260d890b23a10e"
+  },
+  "Name": "Vàng",
+  "Benefit": "Có 9 truyện tạo thu nhập, Được hưởng chia 6:4, Được đẩy đề cử 1 tháng 4 lần",
+  "DateCreated": {
+    "$date": "2024-01-27T19:49:50.855Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:49:50.855Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65b55e73ff260d890b23a10f"
+  },
+  "Name": "Bạch Kim",
+  "Benefit": "Có 15 truyện tạo thu nhập, Được hưởng chia 7:3, Được đẩy đề cử 1 tháng 6 lần",
+  "DateCreated": {
+    "$date": "2024-01-27T19:50:11.639Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:50:11.639Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65b55e84ff260d890b23a110"
+  },
+  "Name": "Kim Cương",
+  "Benefit": "Có 20 truyện tạo thu nhập, Được hưởng chia 8:2, Được đẩy đề cử 1 tháng 10 lần",
+  "DateCreated": {
+    "$date": "2024-01-27T19:50:28.590Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T19:50:28.590Z"
+  }
+}]

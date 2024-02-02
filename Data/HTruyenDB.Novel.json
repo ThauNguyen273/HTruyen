@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "65b56801ff260d890b23a153"
+  },
+  "AuthorId": {
+    "$oid": "65b55efdff260d890b23a112"
+  },
+  "Author": {
+    "AuthorId": "65b55efdff260d890b23a112",
+    "AuthorName": "Tân Phong"
+  },
+  "CategoryId": {
+    "$oid": "65b54d67ff260d890b23a0cc"
+  },
+  "Category": {
+    "CategoryId": "65b54d67ff260d890b23a0cc",
+    "CategoryName": "Ngôn Tình"
+  },
+  "Name": "Táng Kiếm",
+  "MetalTitle": "tangkiem",
+  "Description": "Một năm trước, có người biến mất sau màn mưa dày đặc. Một năm sau, người ấy lại nhẹ nhàng bước đến. Chỉ mong có thể tháo kiếm ra táng* cùng quá khứ. Từ nay về sau, dù có ba ngàn con sông ta cũng chỉ uống một gáo nước.",
+  "TQName": "",
+  "TQUrl": "",
+  "CategoryOT": 3,
+  "NovelST": 1,
+  "Status": 2,
+  "DateCreated": {
+    "$date": "2024-01-27T20:30:57.293Z"
+  },
+  "DateUpdated": {
+    "$date": "2024-01-27T20:38:27.876Z"
+  }
+}]

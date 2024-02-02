@@ -1,0 +1,726 @@
+[{
+  "_id": {
+    "$oid": "65b55efdff260d890b23a111"
+  },
+  "Name": "Tân Phong",
+  "Password": "$2a$11$zQYBzaG9n1y35.tV0qM8vure01jCi6gDXH0IHgYcatuCMtxiE2v7e",
+  "Email": "tacgia@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b55efdff260d890b23a113"
+  },
+  "Wallet": {
+    "WalletId": "65b55efdff260d890b23a113",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b55efdff260d890b23a112"
+  },
+  "Author": {
+    "AuthorId": "65b55efdff260d890b23a112",
+    "AuthorName": "Tân Phong"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T19:52:29.335Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56123ff260d890b23a114"
+  },
+  "Name": "Nhị Cửu Hám Đăng",
+  "Password": "$2a$11$mPwZaFaU1PD/Tt8FNU/lmOZSWQJL5123P6oeYByWRImZymntzaR3i",
+  "Email": "tacgia1@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b56123ff260d890b23a116"
+  },
+  "Wallet": {
+    "WalletId": "65b56123ff260d890b23a116",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b56123ff260d890b23a115"
+  },
+  "Author": {
+    "AuthorId": "65b56123ff260d890b23a115",
+    "AuthorName": "Nhị Cửu Hám Đăng"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:01:39.493Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56138ff260d890b23a117"
+  },
+  "Name": "Mộc Mỹ Xuân",
+  "Password": "$2a$11$RUKAKUriPwrgdojUw3ewHeiRQZBXYBbcal4QSJoAtn/Uqy0SBEvK2",
+  "Email": "tacgia2@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b56138ff260d890b23a119"
+  },
+  "Wallet": {
+    "WalletId": "65b56138ff260d890b23a119",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b56138ff260d890b23a118"
+  },
+  "Author": {
+    "AuthorId": "65b56138ff260d890b23a118",
+    "AuthorName": "Mộc Mỹ Xuân"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:02:00.790Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b5616cff260d890b23a11a"
+  },
+  "Name": "Manh Đát Tiểu Mập Mạp",
+  "Password": "$2a$11$Juzra4UW52kreU3J3T5Fz.2yQFDh6LVQtB.UzmcmheX10rotAiiYK",
+  "Email": "tacgia3@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b5616cff260d890b23a11c"
+  },
+  "Wallet": {
+    "WalletId": "65b5616cff260d890b23a11c",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b5616cff260d890b23a11b"
+  },
+  "Author": {
+    "AuthorId": "65b5616cff260d890b23a11b",
+    "AuthorName": "Manh Đát Tiểu Mập Mạp"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:02:52.467Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56189ff260d890b23a11d"
+  },
+  "Name": "Hỗn Độn Đông QUua",
+  "Password": "$2a$11$LLRZ0Lbd93Peb/.E3d3CtuO4MbMT/AIfDJ9LcAtmrnMn1T/g5kOZ2",
+  "Email": "tacgia4@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b56189ff260d890b23a11f"
+  },
+  "Wallet": {
+    "WalletId": "65b56189ff260d890b23a11f",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b56189ff260d890b23a11e"
+  },
+  "Author": {
+    "AuthorId": "65b56189ff260d890b23a11e",
+    "AuthorName": "Hỗn Độn Đông QUua"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:03:21.498Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b561a5ff260d890b23a120"
+  },
+  "Name": "Thanh Phong Loan",
+  "Password": "$2a$11$OYmFFfNCXANygNY.GVX2ROgupxl5.2UraIhHB0n2rYXOLO63/GqxS",
+  "Email": "tacgia5@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b561a5ff260d890b23a122"
+  },
+  "Wallet": {
+    "WalletId": "65b561a5ff260d890b23a122",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b561a5ff260d890b23a121"
+  },
+  "Author": {
+    "AuthorId": "65b561a5ff260d890b23a121",
+    "AuthorName": "Thanh Phong Loan"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:03:49.472Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b561ebff260d890b23a123"
+  },
+  "Name": "Vạn Tộc Chi Thần",
+  "Password": "$2a$11$4l243VmQxWhR5bf/omASresHSuILQKH/yfPcI0XjsomsoESrpbdpe",
+  "Email": "tacgia6@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b561ebff260d890b23a125"
+  },
+  "Wallet": {
+    "WalletId": "65b561ebff260d890b23a125",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b561ebff260d890b23a124"
+  },
+  "Author": {
+    "AuthorId": "65b561ebff260d890b23a124",
+    "AuthorName": "Vạn Tộc Chi Thần"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:04:59.028Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56213ff260d890b23a126"
+  },
+  "Name": "Diệp Tiểu Thất",
+  "Password": "$2a$11$/1GUpHJOSSoVYXJUhHMfG.ZxD8mVZwJ8zBu4E6NKX8x3/gL5psNly",
+  "Email": "tacgia7@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b56213ff260d890b23a128"
+  },
+  "Wallet": {
+    "WalletId": "65b56213ff260d890b23a128",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b56213ff260d890b23a127"
+  },
+  "Author": {
+    "AuthorId": "65b56213ff260d890b23a127",
+    "AuthorName": "Diệp Tiểu Thất"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:05:39.809Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b5622fff260d890b23a129"
+  },
+  "Name": "Lam Thiên",
+  "Password": "$2a$11$NgkmvXoJtfouupz42iVb0O5DzVlTMNu9NYqkdlZLJlK.YFzvcWg02",
+  "Email": "tacgia8@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b5622fff260d890b23a12b"
+  },
+  "Wallet": {
+    "WalletId": "65b5622fff260d890b23a12b",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b5622fff260d890b23a12a"
+  },
+  "Author": {
+    "AuthorId": "65b5622fff260d890b23a12a",
+    "AuthorName": "Lam Thiên"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:06:07.241Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56253ff260d890b23a12c"
+  },
+  "Name": "Thăng Đấu Yên Dâng",
+  "Password": "$2a$11$vewtl8TSE.P1V7Dw1gck5./86/4FnQpIQY9eGYGWXG7s2qFu1S9gO",
+  "Email": "tacgia9@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b56253ff260d890b23a12e"
+  },
+  "Wallet": {
+    "WalletId": "65b56253ff260d890b23a12e",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b56253ff260d890b23a12d"
+  },
+  "Author": {
+    "AuthorId": "65b56253ff260d890b23a12d",
+    "AuthorName": "Thăng Đấu Yên Dâng"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:06:43.402Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56272ff260d890b23a12f"
+  },
+  "Name": "Lão Ưng Cật Tiểu Kê",
+  "Password": "$2a$11$qCOxdpJnIlHTeVBFhlvEBeWJq.3KjhGu2UYs4Tv7r.yTK/70uymby",
+  "Email": "tacgia10@gmail.com",
+  "Role": 2,
+  "WalletId": {
+    "$oid": "65b56272ff260d890b23a131"
+  },
+  "Wallet": {
+    "WalletId": "65b56272ff260d890b23a131",
+    "Balance": 0
+  },
+  "UserId": null,
+  "User": null,
+  "AuthorId": {
+    "$oid": "65b56272ff260d890b23a130"
+  },
+  "Author": {
+    "AuthorId": "65b56272ff260d890b23a130",
+    "AuthorName": "Lão Ưng Cật Tiểu Kê"
+  },
+  "DateCreated": {
+    "$date": "2024-01-27T20:07:14.313Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56316ff260d890b23a132"
+  },
+  "Name": "Mr.Shadow",
+  "Password": "$2a$11$StOSdS5hVHiSO6Rg6C4Y6epzCN4zhcrdhgtn9cod7TqBjtHKJVr6S",
+  "Email": "docgia@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b56316ff260d890b23a134"
+  },
+  "Wallet": {
+    "WalletId": "65b56316ff260d890b23a134",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b56316ff260d890b23a133"
+  },
+  "User": {
+    "UserId": "65b56316ff260d890b23a133",
+    "UserName": "Mr.Shadow"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:09:58.110Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56342ff260d890b23a135"
+  },
+  "Name": "Thiên Đạo",
+  "Password": "$2a$11$gE.dNqT/fRPFZJbYuUGsyObARCupMrm2ABzxyKXTJgNALS0jtBk8m",
+  "Email": "docgia1@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b56342ff260d890b23a137"
+  },
+  "Wallet": {
+    "WalletId": "65b56342ff260d890b23a137",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b56342ff260d890b23a136"
+  },
+  "User": {
+    "UserId": "65b56342ff260d890b23a136",
+    "UserName": "Thiên Đạo"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:10:42.656Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56355ff260d890b23a138"
+  },
+  "Name": "Minh Thanh",
+  "Password": "$2a$11$QiF7VX9sAb7zY/8H50czW.Mv8G9IQJmttxJENQXhJFLR/X.nbTjx2",
+  "Email": "docgia2@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b56355ff260d890b23a13a"
+  },
+  "Wallet": {
+    "WalletId": "65b56355ff260d890b23a13a",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b56355ff260d890b23a139"
+  },
+  "User": {
+    "UserId": "65b56355ff260d890b23a139",
+    "UserName": "Minh Thanh"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:11:01.730Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b5637cff260d890b23a13b"
+  },
+  "Name": "Thanh Long",
+  "Password": "$2a$11$/ZKzbmSCA68SceEapYX/m.HV0q8AT0goa/DgkbdyOdRjqJLkG1Ziy",
+  "Email": "docgia3@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b5637cff260d890b23a13d"
+  },
+  "Wallet": {
+    "WalletId": "65b5637cff260d890b23a13d",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b5637cff260d890b23a13c"
+  },
+  "User": {
+    "UserId": "65b5637cff260d890b23a13c",
+    "UserName": "Thanh Long"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:11:40.461Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56398ff260d890b23a13e"
+  },
+  "Name": "Corn207",
+  "Password": "$2a$11$ZMf2aZdoqTBFJB6rf5BdIuvFDSCmYkkueu4MF4RvwsH2O/uvpJSGO",
+  "Email": "docgia4@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b56398ff260d890b23a140"
+  },
+  "Wallet": {
+    "WalletId": "65b56398ff260d890b23a140",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b56398ff260d890b23a13f"
+  },
+  "User": {
+    "UserId": "65b56398ff260d890b23a13f",
+    "UserName": "Corn207"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:12:08.570Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563a7ff260d890b23a141"
+  },
+  "Name": "Ngô Linh",
+  "Password": "$2a$11$11WRO8PADbUkqHXHTLlbTuNFcYr1EODzp8zI2Lt62o6U7F7iEFujW",
+  "Email": "docgia5@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b563a7ff260d890b23a143"
+  },
+  "Wallet": {
+    "WalletId": "65b563a7ff260d890b23a143",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b563a7ff260d890b23a142"
+  },
+  "User": {
+    "UserId": "65b563a7ff260d890b23a142",
+    "UserName": "Ngô Linh"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:12:23.971Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563c3ff260d890b23a144"
+  },
+  "Name": "Xuân Nhật",
+  "Password": "$2a$11$XC0.yPC5wLn/GGDF21lOi.dQRKXxYtazX1TBl2/8kJNPZY9EQzUW6",
+  "Email": "docgia6@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b563c3ff260d890b23a146"
+  },
+  "Wallet": {
+    "WalletId": "65b563c3ff260d890b23a146",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b563c3ff260d890b23a145"
+  },
+  "User": {
+    "UserId": "65b563c3ff260d890b23a145",
+    "UserName": "Xuân Nhật"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:12:51.649Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563d4ff260d890b23a147"
+  },
+  "Name": "Phúc2k",
+  "Password": "$2a$11$sgiziGxKdN8.bkQzz2RNQ.OpN9/CQ3wZ7SSYZtkuG9Y4R/4sYvqwW",
+  "Email": "docgia7@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b563d4ff260d890b23a149"
+  },
+  "Wallet": {
+    "WalletId": "65b563d4ff260d890b23a149",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b563d4ff260d890b23a148"
+  },
+  "User": {
+    "UserId": "65b563d4ff260d890b23a148",
+    "UserName": "Phúc2k"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:13:08.057Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563f3ff260d890b23a14a"
+  },
+  "Name": "Thái Linh Lang",
+  "Password": "$2a$11$.r0SjNNskA81Q8mUYos1pOg5qhi75bZc.NgIJ6VraX2tETwMehwPm",
+  "Email": "docgia8@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b563f3ff260d890b23a14c"
+  },
+  "Wallet": {
+    "WalletId": "65b563f3ff260d890b23a14c",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b563f3ff260d890b23a14b"
+  },
+  "User": {
+    "UserId": "65b563f3ff260d890b23a14b",
+    "UserName": "Thái Linh Lang"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:13:39.047Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b5642dff260d890b23a14d"
+  },
+  "Name": "Kỷ Vân Tiêu",
+  "Password": "$2a$11$K0NRAvs.9iC4G.dPi39HZuvKL5VutIU//OWDfkCjjbWP/zbu8zZx2",
+  "Email": "docgia9@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b5642dff260d890b23a14f"
+  },
+  "Wallet": {
+    "WalletId": "65b5642dff260d890b23a14f",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b5642dff260d890b23a14e"
+  },
+  "User": {
+    "UserId": "65b5642dff260d890b23a14e",
+    "UserName": "Kỷ Vân Tiêu"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:14:37.981Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56447ff260d890b23a150"
+  },
+  "Name": "Phạm Tùng",
+  "Password": "$2a$11$3BwvbTles3beBMWiQwDb2O5hPni2JF48//3XtG0D6cBllJ4GBamNG",
+  "Email": "docgia10@gmail.com",
+  "Role": 3,
+  "WalletId": {
+    "$oid": "65b56447ff260d890b23a152"
+  },
+  "Wallet": {
+    "WalletId": "65b56447ff260d890b23a152",
+    "Balance": 0
+  },
+  "UserId": {
+    "$oid": "65b56447ff260d890b23a151"
+  },
+  "User": {
+    "UserId": "65b56447ff260d890b23a151",
+    "UserName": "Phạm Tùng"
+  },
+  "AuthorId": null,
+  "Author": null,
+  "DateCreated": {
+    "$date": "2024-01-27T20:15:03.574Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+}]

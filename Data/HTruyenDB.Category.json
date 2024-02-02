@@ -1,0 +1,512 @@
+[{
+  "_id": {
+    "$oid": "65b54cefff260d890b23a0c9"
+  },
+  "Name": "Huyền Huyễn",
+  "MetalTitle": "truyen-huyen-huyen",
+  "Description": "Huyền Huyễn (còn được gọi là Huyền Ảo) là những truyện có rất nhiều yếu tố kỳ ảo, phép thuật, được đặt trong bối cảnh siêu tưởng như tiên giới, ma giới... Nội dung chính chủ yếu xoay quanh về việc tu luyện pháp khí, ma pháp, tu đạo, pháp bảo, tu tiên...."
+},
+{
+  "_id": {
+    "$oid": "65b54d2aff260d890b23a0ca"
+  },
+  "Name": "Kiếm Hiệp",
+  "MetalTitle": "truyen-kiem-hiep",
+  "Description": "Kiếm Hiệp là những truyện có bối cảnh cổ trang, nhân vật chính là người trong các môn phái võ lâm, tu luyện võ công tâm pháp. Thông thường kết thúc truyện, võ công của nhân vật chính sẽ đạt đến mức thượng thừa, thống nhất hoặc quy ẩn giang hồ."
+},
+{
+  "_id": {
+    "$oid": "65b54d47ff260d890b23a0cb"
+  },
+  "Name": "Lịch Sử",
+  "MetalTitle": "truyen-lich-su",
+  "Description": "Thường có bối cảnh vào các thời đại phong kiến, nhân vật chính sẽ sống lại hoặc xuyên không đến những triều đại ấy và thay đổi lịch sử."
+},
+{
+  "_id": {
+    "$oid": "65b54d67ff260d890b23a0cc"
+  },
+  "Name": "Ngôn Tình",
+  "MetalTitle": "truyen-ngon-tinh",
+  "Description": "Ngôn Tình là tiểu thuyết viết về tình yêu giữa các đôi nam nữ…"
+},
+{
+  "_id": {
+    "$oid": "65b54d77ff260d890b23a0cd"
+  },
+  "Name": "Tiên Hiệp",
+  "MetalTitle": "truyen-tien-hiep",
+  "Description": "Tiên Hiệp là những tiểu thuyết lấy bối cảnh chính ở thời Trung Quốc cổ đại, nội dung truyện thường miêu tả con đường cầu tiên tu đạo, đấu tranh sinh tồn trong thế giới tu tiên của nhân vật chính."
+},
+{
+  "_id": {
+    "$oid": "65b54d88ff260d890b23a0ce"
+  },
+  "Name": "Dị Giới",
+  "MetalTitle": "truyen-di-gioi",
+  "Description": "Dị Giới là những truyện mà nhân vật chính sẽ xuyên không đến một không gian hoặc một thế giới có nền văn minh hoàn toàn khác Trái Đất."
+},
+{
+  "_id": {
+    "$oid": "65b54d9aff260d890b23a0cf"
+  },
+  "Name": "Đô Thị",
+  "MetalTitle": "truyen-đo-thi",
+  "Description": "Đô thị là những truyện lấy bối cảnh ở thời hiện đại, chủ yếu viết về cuộc sống sinh hoạt thường ngày ở thành phố, nông thôn, miền núi, vùng biển... xung quanh chúng ta."
+},
+{
+  "_id": {
+    "$oid": "65b54daaff260d890b23a0d0"
+  },
+  "Name": "Huyền Ảo",
+  "MetalTitle": "truyen-huyen-ao",
+  "Description": "Huyền Ảo (còn được gọi là Huyền Huyễn) là những truyện có rất nhiều yếu tố kì ảo, phép thuật, được đặt trong bối cảnh siêu tưởng như tiên giới, ma giới… , Nội dung chính chủ yếu xoay quanh về việc tu luyện pháp khí, ma pháp, tu đạo, pháp bảo, tu tiên..."
+},
+{
+  "_id": {
+    "$oid": "65b54dbfff260d890b23a0d1"
+  },
+  "Name": "Trinh Thám",
+  "MetalTitle": "truyen-trinh-tham",
+  "Description": "Lấy đề tài về những màn điều tra, đấu trí cân não, giải quyết những vụ án khó khăn hóc búa....của nhân vật chính."
+},
+{
+  "_id": {
+    "$oid": "65b54dd1ff260d890b23a0d2"
+  },
+  "Name": "Cổ Đại",
+  "MetalTitle": "truyen-co-đai",
+  "Description": "Truyện lấy bối cảnh ở các thế giới khác hoặc trong lịch sử nơi các triều đại phong kiến tồn tại."
+},
+{
+  "_id": {
+    "$oid": "65b54de3ff260d890b23a0d3"
+  },
+  "Name": "Hệ Thống",
+  "MetalTitle": "truyen-he-thong",
+  "Description": "Nội dung phần lớn tập trung vào việc nhân vật chính bị thế lực thần bí (tác giả) tích hợp một cái hệ thống như trong game vào người. Mỗi khi hoàn thành nhiệm vụ hay giết người/quái....sẽ được tăng năng lực hay mua thần khí... "
+},
+{
+  "_id": {
+    "$oid": "65b54df7ff260d890b23a0d4"
+  },
+  "Name": "Khoa Huyễn",
+  "MetalTitle": "truyen-khoa-huyen",
+  "Description": "Khoa Huyễn là thể loại truyện có nội dung về khoa học viễn tưởng."
+},
+{
+  "_id": {
+    "$oid": "65b54e0aff260d890b23a0d5"
+  },
+  "Name": "Quân Sự",
+  "MetalTitle": "truyen-quan-su",
+  "Description": "Quân Sự là những truyện liên quan đến đề tài về quân đội như cuộc sống sinh hoạt, chiến tranh, khai mở lãnh thổ..."
+},
+{
+  "_id": {
+    "$oid": "65b54e1cff260d890b23a0d6"
+  },
+  "Name": "Võng Du",
+  "MetalTitle": "truyen-vong-du",
+  "Description": "Võng Du là loại truyện chuyên viết về game, nhân vật chính gặp nhau trong game, có thể là nhất kiến chung tình, lâu ngày sinh tình, hoặc hoan hỉ oan gia...Võng Du chủ yếu có hai loại: một là chỉ tập trung viết về đề tài game trong suốt bộ truyện, hai là sẽ đan xen giữa thực tại và thế giới ảo."
+},
+{
+  "_id": {
+    "$oid": "65b54e2bff260d890b23a0d7"
+  },
+  "Name": "Xuyên Không",
+  "MetalTitle": "truyen-xuyen-khong",
+  "Description": "Xuyên Không là loại truyện mà nhân vật chính đang ở thời hiện đại bỗng gặp phải bất trắc chẳng hạn như bệnh tật, tai nạn... và bị một thế lực bí ẩn nào đó khiến bản thân xuyên qua thế giới khác."
+},
+{
+  "_id": {
+    "$oid": "65b54e46ff260d890b23a0d8"
+  },
+  "Name": "Cổ Tiên Hiệp",
+  "MetalTitle": "truyen-co-tien-hiep",
+  "Description": "Cổ Tiên Hiệp là một thể loại giống truyện Tiên Hiệp, nhưng thuộc dạng truyền thống, thuần về tu luyện gian khổ nhiều hơn (rất ít tình tiết liên quan đến tình cảm). Loại truyện này cũng có rất ít cấp độ, nhân vật chính khổ tu, không dễ dàng thường xuyên lên cấp như các bộ Tiên Hiệp khác."
+},
+{
+  "_id": {
+    "$oid": "65b54e55ff260d890b23a0d9"
+  },
+  "Name": "Đam Mỹ",
+  "MetalTitle": "truyen-đam-my",
+  "Description": "Đam Mỹ là loại truyện tình cảm mà hai nhân vật chính sẽ là một cặp đôi nam - nam. Cũng như Ngôn Tình, Đam Mỹ rất đa dạng về thể loại, chẳng hạn như truyện hiện đại, cổ trang, xuyên không, trọng sinh, mạt thế, võng phối, võng du, sinh tử, hệ thống..."
+},
+{
+  "_id": {
+    "$oid": "65b54e64ff260d890b23a0da"
+  },
+  "Name": "Huyền Bí",
+  "MetalTitle": "truyen-huyen-bi",
+  "Description": "Nội dung thường tập trung vào những đối tượng siêu nhiên hoặc hiện tượng siêu hình (phi vật thể), ngoài tầm giải thích của con người hiện nay mà mới chỉ được giả thuyết chưa rõ ràng theo một số cách khác nhau.."
+},
+{
+  "_id": {
+    "$oid": "65b54e77ff260d890b23a0db"
+  },
+  "Name": "Kỳ Huyễn",
+  "MetalTitle": "truyen-ky-huyen",
+  "Description": "Nội dung chủ yếu tập trung vào những điều kỳ bí trong hiện thực, cốt truyện khai thác những sự kiện kỳ bí đó để tạo thành một thế giới huyền ảo rộng lớn."
+},
+{
+  "_id": {
+    "$oid": "65b54e86ff260d890b23a0dc"
+  },
+  "Name": "Linh Dị",
+  "MetalTitle": "truyen-linh-di",
+  "Description": "Nội dung chủ yếu tập trung vào đề tài kinh dị, thần bí, ma quỷ...Nhân vật chính có thể có những khả năng đặc biệt."
+},
+{
+  "_id": {
+    "$oid": "65b54e98ff260d890b23a0dd"
+  },
+  "Name": "Ma Pháp",
+  "MetalTitle": "truyen-ma-phap",
+  "Description": "Nội dung tương tự với thể loại Huyền Huyễn và Huyền Ảo nhưng chủ yếu tập trung vào các loại pháp thuật, ma pháp phương Tây."
+},
+{
+  "_id": {
+    "$oid": "65b54ea6ff260d890b23a0de"
+  },
+  "Name": "Mạt Thế",
+  "MetalTitle": "truyen-mat-the",
+  "Description": "Lấy bối cảnh diễn ra ở thời đại tận thế. Bởi vì chiến tranh hoặc khoa học kỹ thuật mất kiểm soát, hay vì lý do nào đó ngoài ý muốn mà xảy ra tai nạn (phát tán virus, bùng nổ dịch bệnh...) làm xuất hiện tang thi (zombie) hoặc động vật/thực vật biến dị... tấn công con người."
+},
+{
+  "_id": {
+    "$oid": "65b54eb5ff260d890b23a0df"
+  },
+  "Name": "Quan Trường",
+  "MetalTitle": "truyen-quan-truong",
+  "Description": "Cốt truyện chủ yếu tập trung vào những việc tranh đấu quyền lực trong chốn quan trường ở bối cảnh cổ đại hoặc hiện đại."
+},
+{
+  "_id": {
+    "$oid": "65b54ed1ff260d890b23a0e0"
+  },
+  "Name": "Thể Thao",
+  "MetalTitle": "truyen-the-thao",
+  "Description": "Cốt truyện chủ yếu tập trung về đề tài thể thao như: Đá banh, bóng bầu dục, điền kinh...."
+},
+{
+  "_id": {
+    "$oid": "65b54ee1ff260d890b23a0e1"
+  },
+  "Name": "Tu Chân",
+  "MetalTitle": "truyen-tu-chan",
+  "Description": "Cốt truyện tương tự như Tiên Hiệp, Cổ Tiên Hiệp."
+},
+{
+  "_id": {
+    "$oid": "65b54ef0ff260d890b23a0e2"
+  },
+  "Name": "Hiện Đại",
+  "MetalTitle": "truyen-hien-đai",
+  "Description": "Bối cảnh của truyện diễn ra ở thời gian thực tại hoặc tương lai."
+},
+{
+  "_id": {
+    "$oid": "65b54f01ff260d890b23a0e3"
+  },
+  "Name": "Sắc Hiệp",
+  "MetalTitle": "truyen-sac-hiep",
+  "Description": "Sắc Hiệp là những truyện có nội dung khá nhạy cảm, tuy nhiên các tình tiết cũng rất lôi cuốn, hấp dẫn và đa dạng, phù hợp với các độc giả đã trưởng thành, hãy cân nhắc kỹ trước khi đọc nhé!."
+},
+{
+  "_id": {
+    "$oid": "65b54f0fff260d890b23a0e4"
+  },
+  "Name": "Bách Hợp",
+  "MetalTitle": "truyen-bach-hop",
+  "Description": "Bách Hợp là loại truyện tình cảm mà hai nhân vật chính sẽ là một cặp đôi nữ - nữ. Cũng như Ngôn Tình, Bách Hợp rất đa dạng về thể loại, chẳng hạn như truyện hiện đại, cổ trang, xuyên không, trọng sinh, mạt thế, võng phối,..."
+},
+{
+  "_id": {
+    "$oid": "65b54f1eff260d890b23a0e5"
+  },
+  "Name": "Bình Đạm",
+  "MetalTitle": "truyen-binh-đam",
+  "Description": "Nội dung của truyện diễn biến chậm, thường miêu tả cuộc sống sinh hoạt hàng ngày"
+},
+{
+  "_id": {
+    "$oid": "65b54f2bff260d890b23a0e6"
+  },
+  "Name": "Cạnh Kỹ",
+  "MetalTitle": "truyen-canh-ky",
+  "Description": "Nội dung tương tự như thể loại Thể Thao, đa phần tập trung vào Bóng đá hay những công việc đòi hỏi tính chiến lược, tính toán."
+},
+{
+  "_id": {
+    "$oid": "65b54f3bff260d890b23a0e7"
+  },
+  "Name": "Cung Đấu",
+  "MetalTitle": "truyen-cung-đau",
+  "Description": "Cung Đấu là thể loại viết về những cuộc đấu đá tranh đoạt trong hậu cung giữa các phi tần với nhau để giành sủng ái của vua chúa thời cổ đại xưa."
+},
+{
+  "_id": {
+    "$oid": "65b54f4cff260d890b23a0e8"
+  },
+  "Name": "Đặc Sắc",
+  "MetalTitle": "truyen-đac-sac",
+  "Description": "Truyện sắc full là một thể loại truyện có nhiều tình tiết sắc, khá hấp dẫn đối với người đọc, tuy nhiên đòi hỏi người đọc phải đủ số tuổi quy định. Nếu không, khi đọc truyện sắc với cảnh nóng sẽ gât ảnh hưởng tới tâm lý người đọc truyện. Chúc các bạn độc giả có những giây phút thư giãn thật tuyệt vời bên những tác phẩm đặc sắc nhé! Mọi ý kiến đóng góp xin gửi về cho các quản trị viên để phục vụ các bạn tốt hơn nữa!"
+},
+{
+  "_id": {
+    "$oid": "65b54f5eff260d890b23a0e9"
+  },
+  "Name": "Điền Văn",
+  "MetalTitle": "truyen-đien-van",
+  "Description": "Điền Văn là thể loại nhẹ nhàng nhất trong các loại truyện. Những tác phẩm thuộc đề tài này thường viết về cuộc sống sinh hoạt yên ả, bình thường của nhân vật chính. Truyện sẽ vô cùng ấm áp, không ngược, không nhiều sóng gió và luôn luôn kết thúc HE."
+},
+{
+  "_id": {
+    "$oid": "65b55593ff260d890b23a0ea"
+  },
+  "Name": "Dị Năng",
+  "MetalTitle": "truyen-di-nang",
+  "Description": "Nội dung thường lấy bối cảnh ở đô thị thời hiện đại, nhân vật chính xảy ra sự cố nào đó (hoặc bẩm sinh) có được năng lực khác người như: có thể phát ra điện, thể lực vượt trội...."
+},
+{
+  "_id": {
+    "$oid": "65b555a5ff260d890b23a0eb"
+  },
+  "Name": "Đoản Văn",
+  "MetalTitle": "truyen-đoan-van",
+  "Description": "Truyện ngắn, nội dung thường diễn biến rất nhanh, chỉ từ có 1 chương."
+},
+{
+  "_id": {
+    "$oid": "65b555baff260d890b23a0ec"
+  },
+  "Name": "Đồng Nhân",
+  "MetalTitle": "truyen-đong-nhan",
+  "Description": "Đồng Nhân là thể loại mà tác giả sẽ dựa vào cốt truyện, tình tiết hoặc tên/tính cách nhân vật từ nguyên tác như Harry Potter, truyện của Kim Dung, Cổ Long, Quỳnh Dao... để viết lại cái kết khác hoặc thậm chí thay đổi luôn cả nội dung chính của truyện đó."
+},
+{
+  "_id": {
+    "$oid": "65b55b46ff260d890b23a0ed"
+  },
+  "Name": "Đông Phương",
+  "MetalTitle": "truyen-đong-phuong",
+  "Description": "Truyện có bối cảnh diễn ra ở phương đông"
+},
+{
+  "_id": {
+    "$oid": "65b55b5dff260d890b23a0ee"
+  },
+  "Name": "Gia Đấu",
+  "MetalTitle": "truyen-gia-đau",
+  "Description": "Nội dung chủ yếu xoay quanh những tranh chấp, khúc mắt trong gia đình."
+},
+{
+  "_id": {
+    "$oid": "65b55b6aff260d890b23a0ef"
+  },
+  "Name": "Hài Hước",
+  "MetalTitle": "truyen-hai-huoc",
+  "Description": "Nội dung mang tình tiết gây cười, thoải mái, thích hợp để giải trí."
+},
+{
+  "_id": {
+    "$oid": "65b55b7fff260d890b23a0f0"
+  },
+  "Name": "Hồng Hoang",
+  "MetalTitle": "truyen-hong-hoang",
+  "Description": "Bối cạnh truyện chủ yếu diễn ra vào thời tiền sử, tiền cổ đại, khi văn minh nhân loại còn ở thời kỳ sơ khai nhất"
+},
+{
+  "_id": {
+    "$oid": "65b55ba4ff260d890b23a0f1"
+  },
+  "Name": "Khác",
+  "MetalTitle": "truyen-khac",
+  "Description": "Nội dung không thuộc những thể loại đã có."
+},
+{
+  "_id": {
+    "$oid": "65b55bb0ff260d890b23a0f2"
+  },
+  "Name": "Light Novel",
+  "MetalTitle": "truyen-light-novel",
+  "Description": "Tình tiết, diễn biến trong truyện diễn ra tốt đẹp, không gây bức xúc cho người đọc, HE."
+},
+{
+  "_id": {
+    "$oid": "65b55bc6ff260d890b23a0f3"
+  },
+  "Name": "Ngược",
+  "MetalTitle": "truyen-nguoc",
+  "Description": "Nội dung chủ yếu tập trung vào mối quan hệ của các nhân vật, yêu thương nhau nhưng vì lý do nào đó mà không đến được với nhau, thậm chí có thể trở mặt thành thù."
+},
+{
+  "_id": {
+    "$oid": "65b55be5ff260d890b23a0f4"
+  },
+  "Name": "Nhàn Hưu",
+  "MetalTitle": "truyen-nhan-huu",
+  "Description": "Cốt truyện chủ yếu diễn ra một cách nhẹ nhàn, diễn biến chậm, ít xuất hiện tình tiết cao trào."
+},
+{
+  "_id": {
+    "$oid": "65b55bf2ff260d890b23a0f5"
+  },
+  "Name": "Nữ Cường",
+  "MetalTitle": "truyen-nu-cuong",
+  "Description": "Nội dung truyện có nhân vật chính là nữ, nhân vật chính có khả năng, tài hoa, thực lực chiếm sự chủ đạo trong phần lớn tình huống diễn biến."
+},
+{
+  "_id": {
+    "$oid": "65b55bfeff260d890b23a0f6"
+  },
+  "Name": "Nữ Hiệp",
+  "MetalTitle": "truyen-nu-hiep",
+  "Description": "Nội dung tương tự như thể loại Kiếm Hiệp nhưng nhân vật chính là nữ, hoặc trong truyện nhân vật nữ chủ động trượng nghĩa hành hiệp, không vô dụng như bình hoa di động."
+},
+{
+  "_id": {
+    "$oid": "65b55c0eff260d890b23a0f7"
+  },
+  "Name": "Nữ Phụ",
+  "MetalTitle": "truyen-nu-phu",
+  "Description": "Nội dung tập trung vào nhân vật chính (nữ) sau khi xảy ra biến cố (chết, tai nạn,...) trọng sinh vào nhân vật phụ trong một tiểu thuyết, phim ảnh nào đó. Từ đó thay đổi câu truyện trước đó."
+},
+{
+  "_id": {
+    "$oid": "65b55c1bff260d890b23a0f8"
+  },
+  "Name": "Phiêu Lưu",
+  "MetalTitle": "truyen-phieu-luu",
+  "Description": "Nội dung tập trung vào những chuyến phiêu lưu đến những vùng đất mới, khám phá những nơi chưa có ai đặt chân vào, tìm kiếm kho báu bị mất tích....Tình tiết kịch tính, hồi hợp, tò mò..."
+},
+{
+  "_id": {
+    "$oid": "65b55c2aff260d890b23a0f9"
+  },
+  "Name": "Sủng",
+  "MetalTitle": "truyen-sung",
+  "Description": "Nội dung chủ yếu về việc nhân vật chính dồn hết tình cảm và suy nghĩ cho người mình yêu, nhân vật chính có thể đáp ứng mọi mong muốn và hết mực bảo vệ người mình yêu"
+},
+{
+  "_id": {
+    "$oid": "65b55c36ff260d890b23a0fa"
+  },
+  "Name": "Thám Hiểm",
+  "MetalTitle": "truyen-tham-hiem",
+  "Description": "Nội dung tương tự như thể loại Phiêu Lưu nhưng tập trung vào việc khám phá những vùng đất chưa được biết tới."
+},
+{
+  "_id": {
+    "$oid": "65b55c49ff260d890b23a0fb"
+  },
+  "Name": "Thương Nghiệp",
+  "MetalTitle": "truyen-thuong-nghiep",
+  "Description": "Nội dung tập trung về vấn đề giao thương mua bán."
+},
+{
+  "_id": {
+    "$oid": "65b55c60ff260d890b23a0fc"
+  },
+  "Name": "Tiểu thuyết",
+  "MetalTitle": "truyen-tieu-thuyet",
+  "Description": "Là những bộ truyện được tác giả viết bằng trí tưởng tượng của mình."
+},
+{
+  "_id": {
+    "$oid": "65b55c6cff260d890b23a0fd"
+  },
+  "Name": "Tiểu Thuyết Khác",
+  "MetalTitle": "truyen-tieu-thuyet-khac",
+  "Description": "Những bộ truyện tiểu thuyết có nội dung mới không nằm trong những thể loại đặc trưng trước đó."
+},
+{
+  "_id": {
+    "$oid": "65b55c7cff260d890b23a0fe"
+  },
+  "Name": "Tiểu Thuyết Lãng Mạn",
+  "MetalTitle": "truyen-tieu-thuyet-lang-man",
+  "Description": "Tiểu thuyết lãng mạn, tiểu thuyết diễm tình hay tiểu thuyết ngôn tình là một thuật ngữ tạm thời để mô tả dòng văn xuôi (hoặc đôi khi văn vần) khai thác các mối quan hệ tình cảm giữa người với người, thông thường có một kết thúc hạnh phúc và có hậu. Theo cách phân loại của giới nghiên cứu văn chương Trung Hoa, thứ tiểu thuyết này đôi khi được liệt vào dạng dành cho người trưởng thành."
+},
+{
+  "_id": {
+    "$oid": "65b55c94ff260d890b23a0ff"
+  },
+  "Name": "Tiểu Thuyết Phương Tây",
+  "MetalTitle": "truyen-tieu-thuyet-phuong-tay",
+  "Description": "Những bộ tiểu thuyết có tác giả là người phương Tây, nội dung bối cảnh diễn ra ở phương Tây."
+},
+{
+  "_id": {
+    "$oid": "65b55cb0ff260d890b23a100"
+  },
+  "Name": "Trọng Sinh",
+  "MetalTitle": "truyen-trong-sinh",
+  "Description": "Trọng sinh có nghĩa là sống lại. Những truyện này thường có nhân vật chính do gây ra một lỗi lầm gì đó, hoặc bởi cuộc sống bị hãm hại thê thảm mà chết đi, sau đấy may mắn được sống lại và vẫn giữ được kí ức của mình ở kiếp trước."
+},
+{
+  "_id": {
+    "$oid": "65b55cbfff260d890b23a101"
+  },
+  "Name": "Trùng Sinh",
+  "MetalTitle": "truyen-trung-sinh",
+  "Description": "Nhân vật chính của truyện do xảy ra sự cố gì đó là sống lại vào bản thân mình hoặc sống lại trong cơ thể của người khác, bối cảnh có thể diễn ra trong thực tại hoặc thế giới huyền ảo khác."
+},
+{
+  "_id": {
+    "$oid": "65b55ccdff260d890b23a102"
+  },
+  "Name": "Truyện Ma",
+  "MetalTitle": "truyen-truyen-ma",
+  "Description": "Truyện có đề tài về những điều thần bí như thần linh, ma quỷ...."
+},
+{
+  "_id": {
+    "$oid": "65b55cddff260d890b23a103"
+  },
+  "Name": "Truyện Ngắn",
+  "MetalTitle": "truyen-truyen-ngan",
+  "Description": "Truyện có nội dung diễn biến nhanh, thường ít hơn 3 chương."
+},
+{
+  "_id": {
+    "$oid": "65b55d05ff260d890b23a104"
+  },
+  "Name": "Truyện Teen",
+  "MetalTitle": "truyen-truyen-teen",
+  "Description": "Truyện có nội dung chủ yếu dành cho độ tuổi từ 13-19."
+},
+{
+  "_id": {
+    "$oid": "65b55d1bff260d890b23a105"
+  },
+  "Name": "Truyện Tình Cảm",
+  "MetalTitle": "truyen-truyen-tinh-cam",
+  "Description": "Truyện Tình Cảm"
+},
+{
+  "_id": {
+    "$oid": "65b55d29ff260d890b23a106"
+  },
+  "Name": "Văn Học Việt Nam",
+  "MetalTitle": "truyen-van-hoc-viet-nam",
+  "Description": "Là những tác phẩm do tác giả Việt viết."
+},
+{
+  "_id": {
+    "$oid": "65b55d37ff260d890b23a107"
+  },
+  "Name": "Võ Hiệp",
+  "MetalTitle": "truyen-vo-hiep",
+  "Description": "Nội dung tương tự như Kiếm Hiệp và Tiên Hiệp nhưng có thể diễn ra ở thực tại hoặc thế giới khác, năng lực nhân vật chính có thể đạt tới cấp độ không giới hạn. Tình tiết tập trung chủ yếu vào vấn đề tu luyện võ thuật."
+},
+{
+  "_id": {
+    "$oid": "65b55d4bff260d890b23a108"
+  },
+  "Name": "Võ Thuật",
+  "MetalTitle": "truyen-vo-thuat",
+  "Description": "Nội dung tương tự thể loại Võ Hiệp hoặc tập trung vào vấn đề võ thuật như: Karate, Kendo,....."
+}]

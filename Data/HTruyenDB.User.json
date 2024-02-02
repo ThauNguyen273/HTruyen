@@ -1,0 +1,220 @@
+[{
+  "_id": {
+    "$oid": "65b56316ff260d890b23a133"
+  },
+  "Email": "docgia@gmail.com",
+  "Name": "Mr.Shadow",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:09:58.111Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56342ff260d890b23a136"
+  },
+  "Email": "docgia1@gmail.com",
+  "Name": "Thiên Đạo",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:10:42.656Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56355ff260d890b23a139"
+  },
+  "Email": "docgia2@gmail.com",
+  "Name": "Minh Thanh",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:11:01.731Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b5637cff260d890b23a13c"
+  },
+  "Email": "docgia3@gmail.com",
+  "Name": "Thanh Long",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:11:40.461Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56398ff260d890b23a13f"
+  },
+  "Email": "docgia4@gmail.com",
+  "Name": "Corn207",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:12:08.570Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563a7ff260d890b23a142"
+  },
+  "Email": "docgia5@gmail.com",
+  "Name": "Ngô Linh",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:12:23.972Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563c3ff260d890b23a145"
+  },
+  "Email": "docgia6@gmail.com",
+  "Name": "Xuân Nhật",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:12:51.649Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563d4ff260d890b23a148"
+  },
+  "Email": "docgia7@gmail.com",
+  "Name": "Phúc2k",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:13:08.057Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b563f3ff260d890b23a14b"
+  },
+  "Email": "docgia8@gmail.com",
+  "Name": "Thái Linh Lang",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:13:39.048Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b5642dff260d890b23a14e"
+  },
+  "Email": "docgia9@gmail.com",
+  "Name": "Kỷ Vân Tiêu",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:14:37.982Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "65b56447ff260d890b23a151"
+  },
+  "Email": "docgia10@gmail.com",
+  "Name": "Phạm Tùng",
+  "Address": null,
+  "Description": null,
+  "ImageId": null,
+  "Image": null,
+  "Gender": 1,
+  "DateCreated": {
+    "$date": "2024-01-27T20:15:03.574Z"
+  },
+  "DateUpdated": {
+    "$date": {
+      "$numberLong": "-62135596800000"
+    }
+  }
+}]
